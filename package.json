@@ -1,0 +1,27 @@
+{
+  "name": "project-2",
+  "version": "1.0.0",
+  "description": "Project 2 for gt coding bootcamp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jgislaszapata/Project-2.git"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "mysql"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jgislaszapata/Project-2/issues"
+  },
+  "homepage": "https://github.com/jgislaszapata/Project-2#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
