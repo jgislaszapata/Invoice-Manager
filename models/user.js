@@ -4,5 +4,3 @@ create table user_details(
     user_email VARCHAR(30),
     password VARCHAR(8)
     );
-    
-    
