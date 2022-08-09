@@ -1,1 +1,1 @@
-console.log("Welcome to project 2");
+console.log("Welcome to invoice manager");
