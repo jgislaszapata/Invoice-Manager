@@ -1,5 +1,27 @@
-DROP DATABASE IF EXISTS clients_db;
-DROP DATABASE IF EXISTS users_db;
+DROP DATABASE IF EXISTS invoice_db;
+CREATE DATABASE invoice_db;
 
-CREATE DATABASE clients_db;
-CREATE DATABASE users_db;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
