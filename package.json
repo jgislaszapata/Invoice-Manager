@@ -1,8 +1,8 @@
 {
   "name": "invoice_manager",
   "version": "1.0.0",
-  "description": "Project 2 for gt coding bootcamp",
-  "main": "index.js",
+  "description": "invoice_manager",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -22,8 +22,11 @@
   },
   "homepage": "https://github.com/jgislaszapata/Project-2#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.3.3",
     "sequelize": "^6.21.3"
   }
 }
