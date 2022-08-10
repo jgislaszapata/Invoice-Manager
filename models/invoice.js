@@ -13,10 +13,11 @@ class Invoice extends Model {}
 //Invoice table declaration
 Invoice.init(
     {
-        ref_number: {
+        invoice_number: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
+            defaultValue: 100,
             autoIncrement: true
         },
         amount: {
