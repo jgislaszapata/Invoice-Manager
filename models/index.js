@@ -9,4 +9,4 @@ Client.hasMany(Invoice, {
     onDelete: 'SET NULL'
 });
 
-module.exports = { Client, Invoice };
+module.exports = { Client, Invoice, User };
