@@ -43,7 +43,6 @@ User.init(
             },
         },
     },
-
     {
         hooks: {
             beforeCreate: async (newUserData) => {
@@ -55,9 +54,6 @@ User.init(
                 return updatedUserData;
             },
         },
-
-  
-   
 
         sequelize,
         timestamps: false,
