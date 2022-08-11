@@ -5,7 +5,7 @@ const sequelize = require('../config/connection');
 const { Model, DataTypes } = require('sequelize');
 
 //import client.js  as client_id is foreign key
-const client = require('./Client');
+//const client = require('./Client');
 
 //initialize Invoice model (table) by extending off Sequelize model class
 class Invoice extends Model {}
@@ -17,22 +17,17 @@ Invoice.init(
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
-            defaultValue: 100,
             autoIncrement: true
         },
         amount: {
             type: DataTypes.DECIMAL,
             allowNull: false,
-            validate: {
-                isDecimal: true
-            }
+            
         },
-        due_data: {
+        due_date: {
             type: DataTypes.DATE,
             allowNull: false,
-            validate: {
-                isDate: true
-            }
+              
         },
         memo: {
             type: DataTypes.STRING
