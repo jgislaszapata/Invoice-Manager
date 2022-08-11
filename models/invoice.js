@@ -17,7 +17,6 @@ Invoice.init(
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
-            defaultValue: 100,
             autoIncrement: true
         },
         amount: {
