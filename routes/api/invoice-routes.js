@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const { Invoice } = require('../../models');
+const { Invoice } = require('../../models/invoice');
 
 //find all invoice from database
 router.get('/', (req, res) => {

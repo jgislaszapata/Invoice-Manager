@@ -1,12 +1,16 @@
 //import models
-const Invoice = require('./Invoice');
-const Client = require('./Client');
-const User = require('./User');
+const User = require('./user');
+const Client = require('./client');
+const Invoice = require('./invoice');
 
 //Client has many Invoices
 Client.hasMany(Invoice, {
     foreignKey: 'id',
     onDelete: 'SET NULL'
+});
+
+Invoice.belongsTo(Client, {
+    foreignKey: 'id'
 });
 
 module.exports = { Client, Invoice, User };
