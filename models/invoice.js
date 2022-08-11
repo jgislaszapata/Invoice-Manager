@@ -5,7 +5,7 @@ const sequelize = require('../config/connection');
 const { Model, DataTypes } = require('sequelize');
 
 //import client.js  as client_id is foreign key
-//const client = require('./Client');
+const client = require('./Client');
 
 //initialize Invoice model (table) by extending off Sequelize model class
 class Invoice extends Model {}
