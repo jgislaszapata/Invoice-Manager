@@ -22,16 +22,12 @@ Invoice.init(
         amount: {
             type: DataTypes.DECIMAL,
             allowNull: false,
-            validate: {
-                isDecimal: true
-            }
+            
         },
-        due_data: {
+        due_date: {
             type: DataTypes.DATE,
             allowNull: false,
-            validate: {
-                isDate: true
-            }
+              
         },
         memo: {
             type: DataTypes.STRING
