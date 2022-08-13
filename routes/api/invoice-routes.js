@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const { Invoice } = require('../../models/invoice');
+const { Client, Invoice } = require('../../models');
 
 //find all invoice from database
 router.get('/',  async(req, res) => {
@@ -13,13 +13,10 @@ router.get('/',  async(req, res) => {
       }
 });
 
-//find invoice by ref_num
+//find invoice by ref_num(primary key)
 router.get('/:id', async(req, res) => {
     try {
-        const invoiceData = await async.findByPk(req.params.id, {
-         
-          include: [ref_num]
-        });
+        const invoiceData = await Invoice.findByPk(req.params.id);
     
         if (!invoiceData) {
           res.status(404).json({ message: 'No Invoice found with this id!' });
@@ -45,14 +42,15 @@ router.post('/', async(req, res) => {
 //update invoice details
 router.put('/:id', (req, res) => {
     Invoice.update({
-       invoice_number:req.body.invoice_number,
+       
         amount:req.body.amount,
         memo:req.body.memo,   
         due_date:req.body.due_date, 
+        id: req.body.id,
      },
      {
         where:{
-            invoice_id:req.params.invoice_id,
+            invoice_number:req.params.id
         },
      }
      ).then((updatedInvoice)=>{
@@ -68,7 +66,7 @@ router.delete('/:id', async (req, res) => {
     try {
         const invoiceData = await Invoice.destroy({
           where: {
-            id: req.params.id
+            invoice_number: req.params.id
           }
         });
     
