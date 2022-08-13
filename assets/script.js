@@ -1,12 +1,13 @@
 console.log(`app started`);
 //Functions for login.html
 
-// const userNameInput = document.getElementById("username-input");
-// const passWordInput = document.getElementById("password-input");
-// const loginBtn = document.getElementById("login-submit");
+const usernameInput = document.getElementById("username-input");
+const passwordInput = document.getElementById("password-input");
+const loginBtn = document.getElementById("login-submit");
 
-// loginBtn.addEventListener("click", function () {
-//     const enteredUsername = userNameInput.value;
-//     const enteredPassword = passWordInput.value;
-//     console.log(`${enteredUsername} ${enteredPassword}`)
-// });
+loginBtn.addEventListener("click", function (event) {
+    event.preventDefault();
+    const enteredUsername = usernameInput.value;
+    const enteredPassword = passwordInput.value; 
+    console.log(`Username: ${enteredUsername} \nPassword: ${enteredPassword}`)
+});
