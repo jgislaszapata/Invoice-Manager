@@ -1,11 +1,17 @@
 const router = require('express').Router();
 
-const { Client } = require('../../models/client');
+const { Client, Invoice } = require('../../models');
+
 
 //find all clients from database
 router.get('/', async(req, res) => {
     try {
-        const clientData = await Client.findAll();
+        const clientData = await Client.findAll({
+          include: [{
+            model: Invoice,
+            attributes: [ 'invoice_number', 'amount', 'due_date', 'memo' ]
+          }]
+        });
         res.status(200).json(clientData);
       } catch (err) {
         res.status(500).json(err);
@@ -15,9 +21,15 @@ router.get('/', async(req, res) => {
 //find client by id
 router.get('/:id',async (req, res) => {
     try {
-        const clientData = await Product.findByPk(req.params.id, {
-         
-          include: []
+        const clientData = await Client.findOne({
+          where: {
+            id: req.params.id, 
+          },
+          include: [{
+            model: Invoice,
+            attributes: [ 'invoice_number', 'amount', 'due_date', 'memo' ]
+
+          }]
         });
     
         if (!clientData) {
@@ -52,7 +64,7 @@ router.post('/', async(req, res) => {
      },
      {
         where:{
-            client_id:req.params.client_id,
+            id:req.params.id,
         },
      }
      ).then((updatedClient)=>{
