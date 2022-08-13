@@ -15,8 +15,69 @@ integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1
     <header>
         <h1 class="bg-primary text-light fw-bold">Invoice Creator</h1>
     </header>
-
-
+    <div class="wrapper">
+        <!--SIDEBAR-->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>My Dashboard</h3>
+            </div>
+            <ul class="list-unstyled components">
+                <p>Dummy Heading</p>
+                <li>
+                    <a href="#">Home</a>
+                </li>
+                <li class="active">
+                    <a href="#invoiceSubMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Invoice</a>
+                    <ul class="collapse list-unstyled" id="invoiceSubMenu">
+                        <li>
+                            <a href="#">New Invoice</a>
+                        </li>
+                        <li>
+                            <a href="#">Read Invoices</a>
+                        </li>
+                        <li>
+                            <a href="#">Update Invoices</a>
+                        </li>
+                        <li>
+                            <a href="#">Delete Invoices</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="active">
+                    <a href="#clientSubMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Clients</a>
+                    <ul class="collapse list-unstyled" id="clientSubMenu">
+                        <li>
+                            <a href="#">New Client</a>
+                        </li>
+                        <li>
+                            <a href="#">Read Clients</a>
+                        </li>
+                        <li>
+                            <a href="#">Update Clients</a>
+                        </li>
+                        <li>
+                            <a href="#">Delete Clients</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            
+        </nav>
+        <div class="content">
+            <div id="content">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="container-fluid">
+            
+                        <button type="button" id="sidebarCollapse" class="btn btn-info">
+                            <i class="fas fa-align-left"></i>
+                            <span>Toggle Sidebar</span>
+                        </button>
+            
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>   
     <script src="./assets/script.js"></script>
 </body>
 </html>
