@@ -14,7 +14,6 @@ router.post('/', async (req, res) => {
       //set up sessions with a logged in data to true
       req.session.save(() => {
         req.session.loggedIn = true;
-        console.log(`Hi I am logged in via signup ${req.session.loggedIn}`);
         res.status(200).json(userData);
       });
  
@@ -47,12 +46,9 @@ router.post('/login', async (req, res) => {
         .json({ message: 'Incorrect email or password. Please try again!' });
       return;
     }
-
     // Once the user successfully logs in, set up the sessions variable 'loggedIn'
     req.session.save(() => {
       req.session.loggedIn = true;
-      console.log(`Hi I am logged in via log in ${req.session.loggedIn}`);
-
       res.status(200).json({ user: dbUserData, message: 'You are now logged in!' });
     });
   } catch (err) {
