@@ -22,7 +22,11 @@ router.get('/dashboard', async (req, res) => {
 
 router.get('/invoice', async (req, res) => {
   try {
+    const invoiceData = await Invoice.findAll();
+    const invoice = invoiceData.map((invoice) => invoice.get({ plain: true }));
+   // const invoice = invoiceData.get({ plain: true });
     res.render('invoice', {
+      invoice,
       loggedIn: req.session.loggedIn
     });
   } catch (err) {

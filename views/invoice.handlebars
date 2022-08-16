@@ -16,20 +16,20 @@
       Edit/Delete
     </div>
   </div>
-  {{#each invoices as |Invoice|}}
-  {{> invoice-details}}
+  {{#each invoice as |Invoice|}}
+
   <div class="row">
     <div class="col">
-     {{ Client_Name}}
+     Name
     </div>
     <div class="col">
-     {{ Invoice_Number}}
+     {{ Invoice.invoice_number}}
     </div>
     <div class="col">
-      {{Amount}}
+      {{Invoice.amount}}
     </div>
     <div class="col">
-      {{Due_Date}}
+      {{Invoice.due_date}}
     </div>
      <div class="col">
       Edit/Delete
@@ -39,3 +39,5 @@
   {{else}}
   <p>You must Login to view Invoice</p>
   {{/if}}
+
+  {{!-- <script src="/js/invoice.js"></script> --}}
