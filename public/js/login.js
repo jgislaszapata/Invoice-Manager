@@ -16,7 +16,6 @@ const loginFormHandler = async (event) => {
       if (response.ok) {
         // If successful, redirect the browser to the profile page
         document.location.replace('/dashboard');
-        alert('Hi');
       } else {
         alert(response.statusText);
       }
@@ -31,7 +30,7 @@ const loginFormHandler = async (event) => {
     const password = document.querySelector('#password-signup').value.trim();
   
     if (name && email && password) {
-      const response = await fetch('/', {
+      const response = await fetch('/api/users', {
         method: 'POST',
         body: JSON.stringify({ name, email, password }),
         headers: { 'Content-Type': 'application/json' },
@@ -39,7 +38,6 @@ const loginFormHandler = async (event) => {
   
       if (response.ok) {
         document.location.replace('/dashboard');
-        alert('HI');
       } else {
         alert(response.statusText);
       }
