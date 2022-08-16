@@ -1,20 +1,26 @@
 //Express package
 const express = require('express');
-
+const path = require('path');
+//import database (sequelize) connection
+const sequelize = require('./config/connection');
 //Import session package
 const session = require('express-session');
-const path = require('path');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
+//setting Handlebars.js as the default template engine
+const exphbs = require('express-handlebars');
+const hbs = exphbs.create({});
 
 //set up session
 const sess = {
     secret: 'Super secret secret',
+    cookie: {},
     resave: false,
-    savaUninitialized: true,
-};
-
-//import database (sequelize) connection
-const sequelize = require('./config/connection');
-
+    saveUninitialized: true,
+    store: new SequelizeStore({
+      db: sequelize
+    })
+  };
+  
 const app = express();
 app.use(session(sess));
 
@@ -25,6 +31,10 @@ const PORT = process.env.PORT || 3001;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Inform Express.js on which template engine to use
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
 
 //turn on routes
 app.use(routes);
