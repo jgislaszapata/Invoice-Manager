@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col">
+      Client Name
+    </div>
+    <div class="col">
+      Invoice Number
+    </div>
+    <div class="col">
+      Amount
+    </div>
+    <div class="col">
+      Due Date
+    </div>
+     <div class="col">
+      Edit/Delete
+    </div>
+  </div>
+  {{#each invoices as |invoice|}}
+  <div class="row">
+    <div class="col">
+     {{ Client_Name}}
+    </div>
+    <div class="col">
+     {{ Invoice_Number}}
+    </div>
+    <div class="col">
+      {{Amount}}
+    </div>
+    <div class="col">
+      {{Due_Date}}
+    </div>
+     <div class="col">
+      Edit/Delete
+    </div>
+  </div>
+  {{/each}}
