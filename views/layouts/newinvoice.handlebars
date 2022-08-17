@@ -1,33 +1,40 @@
-<section>
-        <h2>New Invoice</h2>
+    <header>
+        <h1 class="bg-primary text-light fw-bold">Invoice Manager</h1>
+    </header>
+    
+    <section>
+        <h2 class="text-bg-secondary" id="new-invoice-heading">New Invoice</h2>
     </section>
-    <main class="container text-left">
+    <form>
         <div class="row">
             <div class="col">
-                <h4>Client</h4>
+                <input type="text" class="form-control" placeholder="Client">
             </div>
             <div class="col">
-                <h4>Invoice Date</h4>
-            </div>
+                <input type="text" class="form-control" placeholder="Invoice Number">
+              </div>
         </div>
+    </form>
+    <form>
         <div class="row">
             <div class="col">
-                <h4>Due date</h4>
+                <input type="text" class="form-control" placeholder="Invoice Date">
             </div>
             <div class="col">
-                <h4>Invoice No.</h4>
+                <input type="text" class="form-control" placeholder="Due Dater">
+              </div>
+        </div>
+    </form>
+    <form class="text-center">
+        <div class="row ">
+            <div>
+                <input type="text" class="form-control" placeholder="Notes">
             </div>
         </div>
-        <div class="text-center">
-            <div class="col">
-                <h4>Notes</h4>
-            </div>
-        
-        </div>
-            
-    </main>
-    <div><button>Save</button></div>
-
+    </form>
+    <div><button type="button" class="btn btn-success btn-large">Save Invoice</button></div>
+</body>
+</html>
 
 
 
