@@ -1,0 +1,23 @@
+ {{#each data as |data| }}
+ <div>
+  <h3>Invoices</h3>
+  <table style="width:100%">
+<tr>
+    <th>Client</th>
+    <th>Reg Number</th>
+    <th>balance</th>
+    <th>Due</th>
+  </tr>
+   <tr>
+    <td>{{client.client_name}}</td>
+    <td>{{data.invoice_number}}</td>
+    <td>{{data.amount}}</td>
+    <td>{{data.due_date}}</td>
+  </tr>
+  
+</table>
+
+  </div>
+  {{/each}}
+
+

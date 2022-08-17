@@ -38,7 +38,7 @@ router.post('/login', async (req, res) => {
       return;
     }
 
-    const validPassword = await dbUserData.checkPassword(req.body.password);
+    const validPassword = dbUserData.checkPassword(req.body.password);
 
     if (!validPassword) {
       res
@@ -48,12 +48,30 @@ router.post('/login', async (req, res) => {
     }
     // Once the user successfully logs in, set up the sessions variable 'loggedIn'
     req.session.save(() => {
+      req.session.user_id = dbUserData.id;
       req.session.loggedIn = true;
       res.status(200).json({ user: dbUserData, message: 'You are now logged in!' });
     });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
+  }
+});
+router.post('/', async (req, res) => {
+  try {
+    const Data =  await User.create({
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password,
+    
+    });
+    req.session.save(() => {
+      req.session.user_id = Data.id;
+      req.session.logged_in = true;
+    res.status(200).json(Data);
+    });
+  } catch (err) {
+    res.status(400).json(err);
   }
 });
 

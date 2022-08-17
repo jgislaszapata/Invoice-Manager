@@ -1,17 +1,19 @@
  <div class="login-form">
-            <form action="/examples/actions/confirmation.php" method="post"> 
-                <p class="text-center"><a href="./client.html">return</a></p>
+
+            <form class="form-sign"> 
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Name" required="required">
+                    <input id="name" type="text" class="form-control" placeholder="Name" required="required">
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Email" required="required">
+                    <input id="email"  class="form-control" placeholder="Email" required="required">
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Phone number" required="required">
+                    <input id="phone" class="form-control" placeholder="Phone number" required="required">
                 </div>
                 <div class="form-group">
-                    <button href="./client.html" type="submit" class="btn btn-primary btn-block mb-2">submit</button></a>
+                    <button id="clientsubmit">submit</button>
                 </div>
             </form>
         </div>
+        <script src="/js/client.js"></script>
+

@@ -12,9 +12,31 @@ router.get('/', async(req, res) => {
             attributes: [ 'invoice_number', 'amount', 'due_date', 'memo' ]
           }]
         });
-        res.status(200).json(clientData);
+        
+        const data  = clientData.map((Data) => Data.get({ plain: true }));
+        res.render('viewinvoices', {data,logged_in: true
+});
+       // res.status(200).json(clientData);
       } catch (err) {
         res.status(500).json(err);
+      }
+});
+//New Client
+    router.get('/new', async(req, res) => {
+     res.render("newclient");
+    })
+
+//create a new client 
+router.post('/new', async(req, res) => {
+    try {
+        const clientData = await Client.create({
+        client_name: req.body.name,
+        client_email: req.body.email,
+        client_phone: req.body.phone,
+        });
+        res.status(200).json(clientData);
+      } catch (err) {
+        res.status(400).json(err);
       }
 });
 
@@ -44,15 +66,7 @@ router.get('/:id',async (req, res) => {
     });
   
 
-//create a new client 
-router.post('/', async(req, res) => {
-    try {
-        const clientData = await Client.create(req.body);
-        res.status(200).json(clientData);
-      } catch (err) {
-        res.status(400).json(err);
-      }
-});
+
 
 //update client informaiton
 
