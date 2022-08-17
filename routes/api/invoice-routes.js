@@ -42,9 +42,15 @@ router.get('/:id', async (req, res) => {
     if (!invoiceData) {
       res.status(404).json({ message: 'No Invoice found with this id!' });
       return;
+    } else {
+      const invDetail = invoiceData.map((invDetail) => invDetail.get({ plain: true }));
+      res.render('editInvoice',
+        {
+          invDetail,
+          loggedIn: req.session.loggedIn,
+        });
+      res.status(200).json(invoiceData);
     }
-
-    res.status(200).json(invoiceData);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -61,7 +67,7 @@ router.post('/', async (req, res) => {
 });
 
 //update invoice details
-router.put('/:id', (req, res) => {
+router.put('/:id',  (req, res) => {
   Invoice.update({
 
     amount: req.body.amount,
@@ -75,7 +81,11 @@ router.put('/:id', (req, res) => {
       },
     }
   ).then((updatedInvoice) => {
-    res.json(updatedInvoice);
+    res.render('editInvoice', {
+      updatedInvoice,
+      Updated: true,
+    });
+    
   }).catch((err) => {
     console.log(err);
     res.json(err);
