@@ -50,25 +50,41 @@ router.get('/', async (req, res) => {
 //   }
 // });
 
-// // Use withAuth middleware to prevent access to route
-// router.get('/profile', withAuth, async (req, res) => {
-//   try {
-//     // Find the logged in user based on the session ID
-//     const userData = await User.findByPk(req.session.user_id, {
-//       attributes: { exclude: ['password'] },
-//       include: [{ model: Project }],
-//     });
+router.get('/profile/:email', async (req, res) => {
+   try {
+    const projectData = await User.findOne({
+      where: {
+        user_email: req.params.email,
+      },
+    });
+    const user = projectData.get({ plain: true });
+    res.render('dashboardnew', {
+      ...user,
+      
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
-//     const user = userData.get({ plain: true });
 
-//     res.render('profile', {
-//       ...user,
-//       logged_in: true
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
+router.get('/profile', async (req, res) => {
+  try {
+    const projectData = await User.findOne({
+      where: {
+        id:req.session.user_id,
+      },
+    });
+    const user = projectData.get({ plain: true });
+    res.render('dashboardnew', {
+      ...user,
+      logged_in: req.session.logged_in 
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 
 // router.get('/login', (req, res) => {
 //   // If the user is already logged in, redirect the request to another route
@@ -80,4 +96,6 @@ router.get('/', async (req, res) => {
 //   res.render('login');
 // });
 
+ 
+  
 module.exports = router;

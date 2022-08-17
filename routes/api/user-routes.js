@@ -6,8 +6,8 @@ const { User } = require('../../models');
 router.post('/', async (req, res) => {
    try{
       const userData = await User.create({
-        user_name: req.body.user_name,
-        user_email: req.body.user_email,
+        user_name: req.body.name,
+        user_email: req.body.email,
         password: req.body.password,
       });
 
@@ -23,11 +23,11 @@ router.post('/', async (req, res) => {
 });
 
 //User login 
-router.get('/login', async (req, res) => {
+router.post('/login', async (req, res) => {
   try {
     const dbUserData = await User.findOne({
       where: {
-        email: req.body.email,
+        user_email: req.body.email,
       },
     });
 
@@ -38,7 +38,7 @@ router.get('/login', async (req, res) => {
       return;
     }
 
-    const validPassword = await dbUserData.checkPassword(req.body.password);
+    const validPassword = dbUserData.checkPassword(req.body.password);
 
     if (!validPassword) {
       res
@@ -49,6 +49,7 @@ router.get('/login', async (req, res) => {
 
     // Once the user successfully logs in, set up the sessions variable 'loggedIn'
     req.session.save(() => {
+      req.session.user_id = dbUserData.id;
       req.session.loggedIn = true;
 
       res
@@ -58,6 +59,23 @@ router.get('/login', async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
+  }
+});
+router.post('/', async (req, res) => {
+  try {
+    const Data =  await User.create({
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password,
+    
+    });
+    req.session.save(() => {
+      req.session.user_id = Data.id;
+      req.session.logged_in = true;
+    res.status(200).json(Data);
+    });
+  } catch (err) {
+    res.status(400).json(err);
   }
 });
 
