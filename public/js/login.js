@@ -16,7 +16,7 @@ const loginFormHandler = async (event) => {
       if (response.ok) {
         // If successful, redirect the browser to the profile page
 
-        document.location.replace('/dashboard');
+        document.location.replace('/');
 
       } else {
         alert(response.statusText);
@@ -40,8 +40,8 @@ const loginFormHandler = async (event) => {
         headers: { 'Content-Type': 'application/json' },
       });
   
-      if (response.ok) {S
-      document.location.replace('/dashboard');
+      if (response.ok) {
+      document.location.replace('/');
       } else {
         alert(response.statusText);
       }
