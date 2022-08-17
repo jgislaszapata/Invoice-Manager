@@ -1,66 +1,42 @@
-<div class="wrapper">
-    <!--SIDEBAR-->
-    <nav id="sidebar">
-        <div class="sidebar-header">
-            <h3>My Dashboard</h3>
-        </div>
-        <ul class="list-unstyled components">
-            <p>Dummy Heading</p>
-            <li>
-                <a href="#">Home</a>
-            </li>
-            <li class="active">
-                <a href="#invoiceSubMenu" data-toggle="collapse" aria-expanded="false"
-                    class="dropdown-toggle">Invoice</a>
-                <ul class="collapse list-unstyled" id="invoiceSubMenu">
-                    <li>
-                        <a href="#">New Invoice</a>
-                    </li>
-                    <li>
-                        <a href="#">Read Invoices</a>
-                    </li>
-                    <li>
-                        <a href="#">Update Invoices</a>
-                    </li>
-                    <li>
-                        <a href="#">Delete Invoices</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="active">
-                <a href="#clientSubMenu" data-toggle="collapse" aria-expanded="false"
-                    class="dropdown-toggle">Clients</a>
-                <ul class="collapse list-unstyled" id="clientSubMenu">
-                    <li>
-                        <a href="#">New Client</a>
-                    </li>
-                    <li>
-                        <a href="#">Read Clients</a>
-                    </li>
-                    <li>
-                        <a href="#">Update Clients</a>
-                    </li>
-                    <li>
-                        <a href="#">Delete Clients</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-
-    </nav>
-    <div class="content">
-        <div id="content">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid">
-
-                    <button type="button" id="sidebarCollapse" class="btn btn-info">
-                        <i class="fas fa-align-left"></i>
-                        <span>Toggle Sidebar</span>
-                    </button>
-
+<header>
+        <h1 class="bg-primary text-light fw-bold">Invoice Creator</h1>
+    </header>
+        <div class="container-fluid">
+            <div class="row flex-nowrap">
+                <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+                    <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                        <a href="/public/invoiceMenu.html" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                            <span class="fs-5 d-none d-sm-inline">My Dashboard</span>
+                        </a>
+                        <ul class="nav nav-pills flex-column" id="menu">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link align-middle px-0">
+                                    <span>Home</span>
+                                </a>
+                            <li class="nav-item">
+                                    <a href="#" class="nav-link align-middle px-0">
+                                        <span>New Invoice</span>
+                                    </a>
+                            </li>
+                            <li class="nav-item" >
+                                <a href="/api/invoices/" class="nav-link align-middle px-0">
+                                    <span>View  All Invoices</span>
+                                </a>
+                            </li>
+                            <li class="nav-item" id="newclient">
+                                <a href="/api/clients/new" class="nav-link align-middle px-0">
+                                    <span>Add Client</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </nav>
+                <div class="col py-3">
+                    <p> content</p>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-<script src="../public/js/allinvoice.js"></script>
+
+
+
+   <!--<script src="/js/allinvoice.js"></script>-->

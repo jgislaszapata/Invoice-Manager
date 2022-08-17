@@ -3,16 +3,33 @@ const router = require('express').Router();
 const { Client, Invoice } = require('../../models');
 
 //find all invoice from database
-router.get('/',  async(req, res) => {
+// router.get('/',  async(req, res) => {
 
+//     try {
+//         const invoiceData = await Invoice.findAll();
+//         res.status(200).json(invoiceData);
+//       } catch (err) {
+//         res.status(500).json(err);
+//       }
+// });
+///
+router.get('/', async(req, res) => {
     try {
-        const invoiceData = await Invoice.findAll();
-        res.status(200).json(invoiceData);
+        const invoiceData = await Invoice.findAll({
+          include: [{
+            model: Client,
+            attributes: [ 'client_name' ]
+          }]
+        });
+        
+        const data  = invoiceData.map((Data) => Data.get({ plain: true }));
+        res.render('viewinvoices', {data,logged_in: true
+});
+       // res.status(200).json(clientData);
       } catch (err) {
         res.status(500).json(err);
       }
 });
-
 //find invoice by ref_num(primary key)
 router.get('/:id', async(req, res) => {
     try {

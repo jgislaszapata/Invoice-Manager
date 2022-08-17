@@ -18,7 +18,7 @@ const myfunction = async (event) => {
         // If successful, redirect the browser to the profile page
         
         alert('Client Added to Database');
-        //document.location.replace('/');
+        document.location.replace('/dashboard');
       } else {
         alert(response.statusText);
       }
