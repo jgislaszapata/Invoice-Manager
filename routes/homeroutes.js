@@ -2,31 +2,24 @@ const router = require('express').Router();
 const { Invoice, User, Client } = require('../models');
 //const withAuth = require('../utils/auth');
 
-router.get('/', async (req, res) => {
+router.get('/',  (req, res) => {
   try {
-    // Get all projects and JOIN with user data
-    const userData = 
-    await User.findAll({
-      // include: [
-      //   {
-      //     model: User,
-      //     attributes: ['name'],
-      //   },
-      // ],
-    });
+    res.render('login');
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
-    // Serialize data so the template can read it
-    const users = userData.map((user) => user.get({ plain: true }));
-
-    // Pass serialized data and session flag into template
-    res.render('login', { 
-      // User
-      // logged_in: req.session.logged_in 
+router.get('/dashboard', async (req, res) => {
+  try {
+    res.render('dashboard', {
+      loggedIn: req.session.loggedIn,
     });
   } catch (err) {
     res.status(500).json(err);
   }
 });
+
 
 // router.get('/project/:id', async (req, res) => {
 //   try {
@@ -50,40 +43,52 @@ router.get('/', async (req, res) => {
 //   }
 // });
 
-router.get('/profile/:email', async (req, res) => {
-   try {
-    const projectData = await User.findOne({
-      where: {
-        user_email: req.params.email,
-      },
-    });
-    const user = projectData.get({ plain: true });
-    res.render('dashboardnew', {
-      ...user,
+// router.get('/profile/:email', async (req, res) => {
+//    try {
+//     const projectData = await User.findOne({
+//       where: {
+//         user_email: req.params.email,
+//       },
+//     });
+//     const user = projectData.get({ plain: true });
+//     res.render('dashboardnew', {
+//       ...user,
       
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 
-router.get('/profile', async (req, res) => {
+// router.get('/profile', async (req, res) => {
+//   try {
+//     const projectData = await User.findOne({
+//       where: {
+//         id:req.session.user_id,
+//       },
+//     });
+//     const user = projectData.get({ plain: true });
+//     res.render('dashboardnew', {
+//       ...user,
+//       logged_in: req.session.logged_in
+    
+// =======
+router.get('/invoice', async (req, res) => {
   try {
-    const projectData = await User.findOne({
-      where: {
-        id:req.session.user_id,
-      },
-    });
-    const user = projectData.get({ plain: true });
-    res.render('dashboardnew', {
-      ...user,
-      logged_in: req.session.logged_in 
+    const invoiceData = await Invoice.findAll();
+    const invoice = invoiceData.map((invoice) => invoice.get({ plain: true }));
+   // const invoice = invoiceData.get({ plain: true });
+    res.render('invoice', {
+      invoice,
+      loggedIn: req.session.loggedIn
+
     });
   } catch (err) {
     res.status(500).json(err);
   }
 });
+
 
 
 // router.get('/login', (req, res) => {
@@ -95,6 +100,7 @@ router.get('/profile', async (req, res) => {
 
 //   res.render('login');
 // });
+
 
  
   

@@ -1,0 +1,43 @@
+{{#if loggedIn}}
+<div class="row">
+    <div class="col">
+      Client Name
+    </div>
+    <div class="col">
+      Invoice Number
+    </div>
+    <div class="col">
+      Amount
+    </div>
+    <div class="col">
+      Due Date
+    </div>
+     <div class="col">
+      Edit/Delete
+    </div>
+  </div>
+  {{#each invoice as |Invoice|}}
+
+  <div class="row">
+    <div class="col">
+     Name
+    </div>
+    <div class="col">
+     {{ Invoice.invoice_number}}
+    </div>
+    <div class="col">
+      {{Invoice.amount}}
+    </div>
+    <div class="col">
+      {{Invoice.due_date}}
+    </div>
+     <div class="col">
+      Edit/Delete
+    </div>
+  </div>
+  {{/each}}
+  {{else}}
+  <p>You must Login to view Invoice</p>
+  {{/if}}
+
+  {{!-- <script src="/js/invoice.js"></script> --}}
