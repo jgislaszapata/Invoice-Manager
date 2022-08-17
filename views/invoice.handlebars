@@ -16,11 +16,11 @@
       Edit/Delete
     </div>
   </div>
-  {{#each invoice as |Invoice|}}
+  {{#each allInvoices as |Invoice|}}
 
   <div class="row">
     <div class="col">
-     Name
+    {{client.client_name }}
     </div>
     <div class="col">
      {{ Invoice.invoice_number}}
