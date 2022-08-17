@@ -1,43 +1,32 @@
 {{#if loggedIn}}
-<div class="row">
-    <div class="col">
-      Client Name
-    </div>
-    <div class="col">
-      Invoice Number
-    </div>
-    <div class="col">
-      Amount
-    </div>
-    <div class="col">
-      Due Date
-    </div>
-     <div class="col">
-      Edit/Delete
-    </div>
-  </div>
+<table>
+  <tr>
+    <th>Client Name</th>
+    <th>Invoice Number</th>
+    <th>Amount Due</th>
+    <th>Due Date</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+
   {{#each allInvoices as |Invoice|}}
+  <tr>
+    <td> {{client.client_name }} </td>
+    <td id="inv-num"> {{ Invoice.invoice_number}} </td>
+    <td> {{Invoice.amount}} </td>
+    <td> {{Invoice.due_date}} </td>
+    {{!-- <td> <span class="change"> <i class="fa fa-edit"></i></span></td> --}}
+    <td> <button type="submit" id="change"><i class="fa fa-edit"></i></button></td>
+     <td> <button type="submit" id="del"><i class="fa fa-trash"></i></button></td>
+    {{!-- <td class="del">  <i class="fa fa-trash"></i> </td> --}}
+  </tr>
 
-  <div class="row">
-    <div class="col">
-    {{client.client_name }}
-    </div>
-    <div class="col">
-     {{ Invoice.invoice_number}}
-    </div>
-    <div class="col">
-      {{Invoice.amount}}
-    </div>
-    <div class="col">
-      {{Invoice.due_date}}
-    </div>
-     <div class="col">
-      Edit/Delete
-    </div>
-  </div>
+
   {{/each}}
-  {{else}}
-  <p>You must Login to view Invoice</p>
-  {{/if}}
+</table>
+{{else}}
+<p>You must Login to view Invoice</p>
+{{/if}}
 
-  {{!-- <script src="/js/invoice.js"></script> --}}
+ 
+ <script src="/js/invoice.js"></script>
