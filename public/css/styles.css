@@ -1,5 +1,5 @@
 * {
-    padding: 0;
+    padding: 0px;
 }
 h1 {
     padding: .45em;
@@ -62,3 +62,23 @@ h1 {
         padding-left: 30px !important;
         background: #6d7fcc;
     }
+
+#main-render {
+    padding-right: 0px;
+    padding-left: 0px;
+    margin: 0px;
+}
+
+#logout {
+    margin-top: 3.5em;
+}
+
+#notes-div {
+    margin: 1em;
+    
+}
+
+#logout-nav {
+    border: 2px solid #eed202;
+    border-radius: 12px;
+}

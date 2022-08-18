@@ -19,15 +19,13 @@
   <header class="bg-primary">
     <div>
       <h1 class="text-light fw-bold col">Invoice Manager+</h1>
-      <nav>
-        {{#if loggedIn}}
-        <button class="btn" id="logout">logout</button>
-        {{/if}}
+      <nav id="logout-nav">
+        
       </nav>
 
     </div>
   </header>
-  <main class="container container-fluid mt-5">
+  <main class="container container-fluid mt-5" id="main-render">
     <!-- Render the sub layout -->
     {{{ body }}}
   </main>
