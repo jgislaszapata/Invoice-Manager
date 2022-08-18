@@ -15,14 +15,17 @@
      <div class="col">
       Edit/Delete
     </div>
+    <div class="col">
+     <button id="send" type="submit" >Send Email</button>
+    </div>
   </div>
   {{#each allInvoices as |Invoice|}}
 
   <div class="row">
-    <div class="col">
+    <div  class="col">
     {{client.client_name }}
     </div>
-    <div class="col">
+    <div  class="col">
      {{ Invoice.invoice_number}}
     </div>
     <div class="col">

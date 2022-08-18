@@ -25,8 +25,11 @@ router.get('/login', async (req, res) => {
    
 });
 
+router.get('/email', async (req, res) => {
+  
+    res.render('email');
 
-
+});
 // router.get('/invoice', async (req, res) => {
 //   try {
 //     const invoiceData = await Invoice.findAll();

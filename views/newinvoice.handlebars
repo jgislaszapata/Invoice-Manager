@@ -3,24 +3,21 @@
     </header>
     
     <section>
-        <h2 class="text-bg-secondary" id="new-invoice-heading">New Invoice</h2>
+        <h2 id = "heading" class="text-bg-secondary" id="new-invoice-heading">New Invoice</h2>
     </section>
-    <form>
+    <form class="signup-form">
         <div class="row">
-            <div class="col">
-                <input id="innumber" type="text" class="form-control" placeholder="Invoice Number">
-              </div>
-              <input id="amount" type="text" class="form-control" placeholder="Amount">
+             <input id="amount" type="text" class="form-control" placeholder="Amount">
         </div>
-    </form>
-    <form>
+   
+    
         <div class="row">
             <div class="col">
                 <input id="ddate"type="text" class="form-control" placeholder="Due Date">
               </div>
         </div>
-    </form>
-    <form class="text-center">
+    
+    
         <div class="row ">
             <div>
                 <input id="memo" type="text" class="form-control" placeholder="Notes">
@@ -30,10 +27,11 @@
             </div>
         </div>
     </form>
-    <div><button type="button" class="btn btn-success btn-large">Save Invoice</button></div>
+    <button class="btn btn-primary" id="newinvoice" type="submit" >Save Invoice</button>
 </body>
+<script src="/js/newinvoice.js"></script>
 </html>
 
 
 
-<script src="/js/newinvoice.js"></script>
+
