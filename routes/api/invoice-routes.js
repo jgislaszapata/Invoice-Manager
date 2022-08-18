@@ -1,7 +1,19 @@
 const router = require('express').Router();
+const nodemailer =require('nodemailer');
+const transporter = nodemailer.createTransport({
+  service:"gmail",
+  auth:{
+    user:"",
+    pass:""
+
+  }
+});
+
+
 
 const { Client, Invoice } = require('../../models');
 const { update } = require('../../models/user');
+
 
 //find all invoice from database
 //This routes gets called when Manage Invoice is clicked on dashboard
@@ -27,6 +39,26 @@ router.get('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+
+
+router.get('/new', async(req, res) => {
+     res.render("newinvoice");
+    })
+// router.post('/new', async(req, res) => {
+//     try {
+//         const clientData = await Client.create({
+//         invoice_number: req.body.name,
+//         amount: req.body.email,
+//         due_date: req.body.phone,
+//         memo:req.body.memo,
+//         id:req.body.id,
+//         });
+//         res.status(200).json(clientData);
+//       } catch (err) {
+//         res.status(400).json(err);
+//       }
+// });
 
 //find invoice by ref_num(primary key)
 //this route gets invoked when edit icon is clicked on invoice page,
@@ -74,9 +106,35 @@ router.get('/edit/:id', async (req, res) => {
 });
 
 //create a new invoice 
-router.post('/', async (req, res) => {
+router.post('/new', async (req, res) => {
   try {
-    const invoiceData = await Invoice.create(req.body);
+    const invoiceData = await Invoice.create({  
+    amount:req.body.amount,
+    due_date: req.body.ddate,
+    memo: req.body.memo,
+    id: req.body.id,
+  })
+  const clientData = await Client.findOne({
+      where: {
+        id: req.body.id,
+      },
+    });
+  
+  const user = clientData.get({ plain: true });
+  console.log(user);
+  const options = {
+  from :"",
+  to: `${clientData.client_email}`,
+  subject: "node project with JS",
+  text:`Hello ${clientData.client_name} bill amount ${req.body.amount} is due on ${req.body.ddate}`
+}
+  transporter.sendMail(options,function(err,info){
+if(err){
+  console.log(err);
+  return;
+}
+console.log("sent: "+info.response);
+  })
     res.status(200).json(invoiceData);
   } catch (err) {
     res.status(400).json(err);
