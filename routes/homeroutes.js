@@ -26,6 +26,17 @@ router.get('/login', async (req, res) => {
 });
 
 
+router.get('/newinvoice', async (req, res) => {
+  try{
+    res.render('newinvoice', {
+      loggedIn: req.session.loggedIn,
+      user_name: req.session.user_name, 
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+   
+});
 
 // router.get('/invoice', async (req, res) => {
 //   try {
