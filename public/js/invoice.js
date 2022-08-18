@@ -1,4 +1,8 @@
 
+document.getElementById("send").addEventListener("click", sendEmail);
+
+
+
 
 
 const delInvoice = async (event) => {

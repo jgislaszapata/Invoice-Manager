@@ -11,6 +11,7 @@
     <th>Delete</th>
   </tr>
 
+
   {{#each allInvoices as |Invoice|}}
   <tr>
     <td> {{client.client_name }} </td>
@@ -23,6 +24,7 @@
     <td> <button type="submit" class="del" id={{Invoice.invoice_number}}><i class="fa fa-trash"></i></button></td>
     {{!-- <td class="del"> <i class="fa fa-trash"></i> </td> --}}
   </tr>
+
 
 
   {{/each}}
@@ -39,6 +41,7 @@
     <div class="form-group">
       <label> Amount</label>
       <input name="amount" id="edit-amt" class="form-input" type="text"/>
+
     </div>
     <div class="form-group">
       <label>Due_Date:</label>
