@@ -8,7 +8,7 @@ const myfunction = async (event) => {
   
     if (name && email && phone) {
       // Send a POST request to the API endpoint
-      const response = await fetch('/api/clients/new', {
+      const response = await fetch('/api/clients', {
         method: 'POST',
         body: JSON.stringify({ name ,email, phone }),
         headers: { 'Content-Type': 'application/json' },

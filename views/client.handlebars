@@ -1,28 +1,25 @@
-<header class="bg-primary">
-        <div>
-            <h1 class="text-light fw-bold text-center p-3">Client Information</h1>
-        </div>
-        
-    </header>
+
+{{#if loggedIn}}
+<table>
+ <tr>
+    <th>Client Name</th>
+    <th>Email</th>
+    <th>Phone</th>
+  </tr>
     
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-light">
-                <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-dark min-vh-100">
-                    <a href="/client.html" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-                        <span class="fs-5 d-none p-2 d-sm-inline border border-primary bg-secondary text-white border rounded-pill ">Existing Client</span>
-                    </a>
-                
-                    <a href="/assets/addnewclient.html" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-                        <span class=" fs-5 d-none p-2 d-sm-inline border border-primary bg-secondary text-white border rounded-pill ">New Client</span>
-                    </a>
-                    <a href="/client.html" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-                        <span class="fs-5 d-none p-2 d-sm-inline border border-primary bg-secondary text-white border rounded-pill ">Delete Client</span>
-                    </a>
-                    <a href="/client.html" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-                        <span class="fs-5 d-none p-2 d-sm-inline border border-primary bg-secondary text-white border rounded-pill ">Update Client</span>
-                    </a>
-                </div>   
-            </div>
-        </div>
-    </div  >  
+{{#each data as |Client|}}
+    <tr>
+    <td> {{Client.client_name }} </td>
+    <td> {{Client.client_email}} </td>
+    <td> {{Client.client_phone}} </td>
+    </tr>
+{{/each}}
+</table>
+
+{{else}}
+<p>you must be logged in to view client</p>
+{{/if}}
+
+
+
+    <script src="/js/client.js"></script>
