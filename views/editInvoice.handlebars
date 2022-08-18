@@ -1,20 +1,27 @@
-<div>
-    <p>
-        Invoice Number: {{invoice_number}}
-    </p>
-    <p>
-        Client_id: {{Client_id}}
-    </p>
-    <p>
+
+
+<div class="col-md-6">
+    <h2>Edit Invoice</h2>
+
+    <form  action="/api/invoices/edit/{{invDetail.invoice_number}}" method="post">
+      <div class="form-group">
+        <label > Invoice Number: {{invDetail.invoice_number}}</label>
+     </div>
+      <div class="form-group">
         <label> Amount</label>
-       <input type="text" placeholder={{amount}}>
-    </p>
-    <p>
-       <label>Due_Date:</label>  
-        <input type="text" placeholder={{due_date}}>
-    </p>
-    <p>
-        <label >Memo:</label>
-        <input type="text" placeholder={{memo}}>
-    </p>
-</div>
+        <input name="amount" class="form-input" type="text" value={{invDetail.amount}} >
+      </div>
+      <div class="form-group">
+       <label>Due_Date:</label> 
+        <input name="due_date" class="form-input" type="text" value={{invDetail.due_date}}> 
+      </div>
+      <div class="form-group">
+       <label>Memo:</label> 
+        <input name="memo" class="form-input" type="text" value={{invDetail.memo}}> 
+      </div>
+      <div class="form-group">
+        <button class="" type="submit">Update</button>
+      </div>
+    </form>
+
+  </div>
