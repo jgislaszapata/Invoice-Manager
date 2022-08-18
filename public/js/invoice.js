@@ -10,35 +10,42 @@
 //   alert(response.statusText);
 // };
 
-const editInvoices = async (event) => {
-  const invoice_number = document.querySelector('#inv-num').value.trim();
-const response = await fetch('/api/invoices/id', {
-  method: 'GET',
-  body: JSON.stringify({invoice_number}),
-  headers: {'Content-Type': 'application/json'},
-  });
-  if (response.ok) {
-    document.location.replace('editInvoice');
-  } else {
-    alert(response.statusText);
-  }
-  };
+
 
   const delInvoice = async (event) => {
-    const invNum = document.getElementById('inv-num');
-    const response = await fetch('/api/invoices/id', {
+    event.preventDefault();
+    const invoice_number = event.target.parentNode.id;
+    const response = await fetch('/api/invoices/'+invoice_number, {
       method: 'DELETE',
-      body: JSON.stringify({invNum}),
+     
       header: {'Content-Type': 'application/json'},
     });
     if (response.ok){
-      document.location.replace('invoice');
+      document.location.replace('invoices');
     } else {
       alert(response.statusText);
     }
   };
 
-document.getElementById('change').addEventListener('click', editInvoices);
-// const element = document.getElementById("change");
-// element.addEventListener('click', editInvoices);
-document.getElementById('del').addEventListener('click', delInvoice);
+
+
+
+const editInv = async (event) => {
+  event.preventDefault();
+  const invoice_number = event.target.parentNode.id;
+
+    document.location = '/api/invoices/edit/'+invoice_number;
+   
+ 
+  };
+
+
+const editEl = document.getElementsByClassName('change');
+for(i=0; i< editEl.length; i++) {
+editEl[i].addEventListener('click', editInv);
+};
+
+const delEL = document.getElementsByClassName('del');
+for(i=0; i< delEL.length; i++) {
+delEL[i].addEventListener('click', delInvoice);
+};

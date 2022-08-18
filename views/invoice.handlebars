@@ -12,12 +12,12 @@
   {{#each allInvoices as |Invoice|}}
   <tr>
     <td> {{client.client_name }} </td>
-    <td id="inv-num"> {{ Invoice.invoice_number}} </td>
+    <td> {{ Invoice.invoice_number}}</td>
     <td> {{Invoice.amount}} </td>
     <td> {{Invoice.due_date}} </td>
     {{!-- <td> <span class="change"> <i class="fa fa-edit"></i></span></td> --}}
-    <td> <button type="submit" id="change"><i class="fa fa-edit"></i></button></td>
-     <td> <button type="submit" id="del"><i class="fa fa-trash"></i></button></td>
+    <td> <button type="submit" class="change" id={{Invoice.invoice_number}}><i class="fa fa-edit"></i></button></td>
+     <td> <button type="submit" class="del" id={{Invoice.invoice_number}}><i class="fa fa-trash"></i></button></td>
     {{!-- <td class="del">  <i class="fa fa-trash"></i> </td> --}}
   </tr>
 
