@@ -4,16 +4,7 @@ const { Client, Invoice } = require('../../models');
 const { update } = require('../../models/user');
 
 //find all invoice from database
-// router.get('/',  async(req, res) => {
-
-//     try {
-//         const invoiceData = await Invoice.findAll();
-//         res.status(200).json(invoiceData);
-//       } catch (err) {
-//         res.status(500).json(err);
-//       }
-// });
-///
+//This routes gets called when Manage Invoice is clicked on dashboard
 router.get('/', async (req, res) => {
   try {
     const invoiceData = await Invoice.findAll({
@@ -24,18 +15,22 @@ router.get('/', async (req, res) => {
     });
 
     const allInvoices = invoiceData.map((allInvoices) => allInvoices.get({ plain: true }));
+    
     res.render('invoice',
       {
         allInvoices,
         loggedIn: req.session.loggedIn,
+        
       });
-    // res.status(200).json(clientData);
+   
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
 //find invoice by ref_num(primary key)
+//this route gets invoked when edit icon is clicked on invoice page,
+//allows user to edit invoice data
 router.get('/:id', async (req, res) => {
   try {
     const invoiceData = await Invoice.findByPk(req.params.id);
@@ -45,12 +40,10 @@ router.get('/:id', async (req, res) => {
       return;
     } else {
       const invDetail = invoiceData.get({ plain: true });
-      res.render('editInvoice',
-        {
-          invDetail,
-          loggedIn: req.session.loggedIn,
-        });
-      res.status(200).json(invoiceData);
+     
+      
+      res.status(200).json(invDetail);
+    
     }
   } catch (err) {
     res.status(500).json(err);
@@ -67,12 +60,13 @@ router.get('/edit/:id', async (req, res) => {
       return;
     } else {
       const invDetail = invoiceData.get({ plain: true });
-      res.render('editInvoice',
+      res.render('invoice',
         {
           invDetail,
           loggedIn: req.session.loggedIn,
+          
         });
-      // res.status(200).json(invoiceData);
+      
     }
   } catch (err) {
     res.status(500).json(err);
@@ -90,14 +84,15 @@ router.post('/', async (req, res) => {
 });
 
 //update invoice details
-router.post('/edit/:id', async (req, res) => {
+router.put('/:id', async (req, res) => {
+  console.log(req.body);
   try{
     const updatedInvoice = await Invoice.update({
 
       amount: req.body.amount,
       memo: req.body.memo,
       due_date: req.body.due_date,
-      id: req.body.id,
+      
     },
       {
         where: {
@@ -105,7 +100,8 @@ router.post('/edit/:id', async (req, res) => {
         },
       });
       if(updatedInvoice){
-        res.redirect(302, '/api/invoices')
+        //res.redirect(302, '/api/invoices')
+        res.status(200).json(updatedInvoice);
       } else {
         res.status(500).json(err);
       }
@@ -127,6 +123,11 @@ router.delete('/:id', async (req, res) => {
     if (!invoiceData) {
       res.status(404).json({ message: 'No invoice found with this id!' });
       return;
+    } else {
+      res.render('invoice'), {
+        loggedIn: req.session.loggedIn,
+        editInvoice: false,
+      }
     }
 
     res.status(200).json(invoiceData);
