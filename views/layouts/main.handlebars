@@ -34,7 +34,42 @@
 
   </footer>
   </div>
-
+ Jesus-17-1
+    <div class="container-fluid">
+      {{!-- <div class="row flex-nowrap"> --}}
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+          <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+            <span class="fs-5 d-none d-sm-inline">My Dashboard</span>
+            <ul class="nav nav-pills flex-column" id="menu">
+              <li class="nav-item">
+                <a href="/api/invoices/new" class="nav-link align-middle px-0">
+                  <span>New Invoice</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/api/invoices/" class="nav-link align-middle px-0">
+                  <span>Manage Invoices</span>
+                </a>
+              </li>
+              <li class="nav-item" id="newclient">
+                <a href="/api/clients/" class="nav-link align-middle px-0">
+                  <span>Add/Manage Client</span>
+                </a>
+              </li>
+              <li class="nav-item" id="newclient">
+                <a href="/email" class="nav-link align-middle px-0">
+                  <span>Send Email By Invoice Number</span>
+                </a>
+              </li>
+              <li class="nav-item" id="newclient">
+                <nav>
+                  {{#if loggedIn}}
+                  <button class="no-button" id="logout">logout</button>
+                  {{else}}
+                  <a href="/login" class="nav-link align-middle px-0">login</a>
+                  {{/if}}
+                </nav>
+              </li> main
 
 
 

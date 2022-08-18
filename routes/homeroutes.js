@@ -25,6 +25,12 @@ router.get('/login', async (req, res) => {
    
 });
 
+router.get('/email', async (req, res) => {
+  
+    res.render('email');
+
+
+});
 
 router.get('/newinvoice', async (req, res) => {
   try{
@@ -37,6 +43,7 @@ router.get('/newinvoice', async (req, res) => {
   }
    
 });
+
 
 // router.get('/invoice', async (req, res) => {
 //   try {
