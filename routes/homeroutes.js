@@ -29,7 +29,22 @@ router.get('/email', async (req, res) => {
   
     res.render('email');
 
+
 });
+
+router.get('/newinvoice', async (req, res) => {
+  try{
+    res.render('newinvoice', {
+      loggedIn: req.session.loggedIn,
+      user_name: req.session.user_name, 
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+   
+});
+
+
 // router.get('/invoice', async (req, res) => {
 //   try {
 //     const invoiceData = await Invoice.findAll();
