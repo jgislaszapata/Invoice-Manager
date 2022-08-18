@@ -14,20 +14,22 @@ router.get('/', async(req, res) => {
         });
         
         const data  = clientData.map((Data) => Data.get({ plain: true }));
-        res.render('viewinvoices', {data,logged_in: true
+        res.render('client', {data,loggedIn: req.session.loggedIn,
 });
        // res.status(200).json(clientData);
       } catch (err) {
         res.status(500).json(err);
       }
 });
-//New Client
-    router.get('/new', async(req, res) => {
-     res.render("newclient");
-    })
+
+
+// //New Client
+//     router.get('/new', async(req, res) => {
+//      res.render("newclient");
+//     })
 
 //create a new client 
-router.post('/new', async(req, res) => {
+router.post('/newclient', async(req, res) => {
     try {
         const clientData = await Client.create({
         client_name: req.body.name,
