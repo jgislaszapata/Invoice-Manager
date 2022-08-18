@@ -3,8 +3,8 @@ const nodemailer =require('nodemailer');
 const transporter = nodemailer.createTransport({
   service:"gmail",
   auth:{
-    user:"shubrasalunkecse@gmail.com",
-    pass:"smejcxceqskkbout"
+    user:"",
+    pass:""
 
   }
 });
@@ -100,7 +100,7 @@ router.post('/new', async (req, res) => {
   const user = clientData.get({ plain: true });
   console.log(user);
   const options = {
-  from :"shubrasalunkecse@gmail.com",
+  from :"",
   to: `${clientData.client_email}`,
   subject: "node project with JS",
   text:`Hello ${clientData.client_name} bill amount ${req.body.amount} is due on ${req.body.ddate}`
