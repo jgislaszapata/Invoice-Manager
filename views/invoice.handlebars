@@ -1,43 +1,63 @@
 {{#if loggedIn}}
-<div class="row">
-    <div class="col">
-      Client Name
-    </div>
-    <div class="col">
-      Invoice Number
-    </div>
-    <div class="col">
-      Amount
-    </div>
-    <div class="col">
-      Due Date
-    </div>
-     <div class="col">
-      Edit/Delete
-    </div>
-  </div>
-  {{#each invoice as |Invoice|}}
+<h2>Invoice Data</h2>
+<table>
+  <tr>
+    <th>Client Name</th>
+    <th>Invoice Number</th>
+    <th>Amount Due</th>
+    <th>Due Date</th>
+    <th>Memo</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
 
-  <div class="row">
-    <div class="col">
-     Name
-    </div>
-    <div class="col">
-     {{ Invoice.invoice_number}}
-    </div>
-    <div class="col">
-      {{Invoice.amount}}
-    </div>
-    <div class="col">
-      {{Invoice.due_date}}
-    </div>
-     <div class="col">
-      Edit/Delete
-    </div>
-  </div>
+  {{#each allInvoices as |Invoice|}}
+  <tr>
+    <td> {{client.client_name }} </td>
+    <td> {{ Invoice.invoice_number}}</td>
+    <td> {{Invoice.amount}} </td>
+    <td> {{Invoice.due_date}} </td>
+    <td> {{Invoice.memo}} </td>
+    {{!-- <td> <span class="change"> <i class="fa fa-edit"></i></span></td> --}}
+    <td> <button type="submit" class="change" id={{Invoice.invoice_number}}><i class="fa fa-edit"></i></button></td>
+    <td> <button type="submit" class="del" id={{Invoice.invoice_number}}><i class="fa fa-trash"></i></button></td>
+    {{!-- <td class="del"> <i class="fa fa-trash"></i> </td> --}}
+  </tr>
+
+
   {{/each}}
-  {{else}}
-  <p>You must Login to view Invoice</p>
-  {{/if}}
+</table>
 
-  {{!-- <script src="/js/invoice.js"></script> --}}
+
+<div class="col-md-6" id="hide">
+  <h3>Edit Invoice</h3>
+
+  {{!-- <form action="/api/invoices/edit/{{invDetail.invoice_number}}" method="post"> --}}
+    <div class="form-group">
+      <label> Invoice Number: <span id="edit-invoice-num"> </span> </label>
+    </div>
+    <div class="form-group">
+      <label> Amount</label>
+      <input name="amount" id="edit-amt" class="form-input" type="text"/>
+    </div>
+    <div class="form-group">
+      <label>Due_Date:</label>
+      <input name="due_date" id="edit-due-date" class="form-input" type="text" />
+    </div>
+    <div class="form-group">
+      <label>Memo:</label>
+      <input name="memo" id="edit-memo" class="form-input" type="text"/>
+    </div>
+    <div class="form-group">
+      <button class="" type="submit" onclick="updateInvoice()">Update</button>
+    </div>
+  {{!-- </form> --}}
+
+</div>
+
+{{else}}
+<p>You must Login to view Invoice</p>
+{{/if}}
+
+
+<script src="/js/invoice.js"></script>

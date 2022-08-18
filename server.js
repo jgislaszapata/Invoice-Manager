@@ -9,6 +9,7 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 //setting Handlebars.js as the default template engine
 const exphbs = require('express-handlebars');
 const hbs = exphbs.create({});
+const bodyParser = require('body-parser')
 
 //set up session
 const sess = {
@@ -35,6 +36,7 @@ app.set('view engine', 'handlebars');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 //turn on routes
 app.use(routes);
