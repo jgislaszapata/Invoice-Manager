@@ -24,7 +24,7 @@ const data = [
     
   {
     amount: 800,
-    due_date: '2022-07-11 05:12:59',
+    due_date: '2022-07-11',
     memo: 'memo4',
     id:5,
     

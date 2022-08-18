@@ -1,4 +1,5 @@
 {{#if loggedIn}}
+<h2>Invoice Data</h2>
 <table>
   <tr>
     <th>Client Name</th>
@@ -17,16 +18,44 @@
     <td> {{Invoice.due_date}} </td>
     {{!-- <td> <span class="change"> <i class="fa fa-edit"></i></span></td> --}}
     <td> <button type="submit" class="change" id={{Invoice.invoice_number}}><i class="fa fa-edit"></i></button></td>
-     <td> <button type="submit" class="del" id={{Invoice.invoice_number}}><i class="fa fa-trash"></i></button></td>
-    {{!-- <td class="del">  <i class="fa fa-trash"></i> </td> --}}
+    <td> <button type="submit" class="del" id={{Invoice.invoice_number}}><i class="fa fa-trash"></i></button></td>
+    {{!-- <td class="del"> <i class="fa fa-trash"></i> </td> --}}
   </tr>
 
 
   {{/each}}
 </table>
+
+
+<div class="col-md-6" id="hide">
+  <h3>Edit Invoice</h3>
+
+  {{!-- <form action="/api/invoices/edit/{{invDetail.invoice_number}}" method="post"> --}}
+    <div class="form-group">
+      <label> Invoice Number: <span id="edit-invoice-num"> </span> </label>
+    </div>
+    <div class="form-group">
+      <label> Amount</label>
+      <input name="amount" id="edit-amt" class="form-input" type="text"/>
+    </div>
+    <div class="form-group">
+      <label>Due_Date:</label>
+      <input name="due_date" id="edit-due-date" class="form-input" type="text" />
+    </div>
+    <div class="form-group">
+      <label>Memo:</label>
+      <input name="memo" id="edit-memo" class="form-input" type="text"/>
+    </div>
+    <div class="form-group">
+      <button class="" type="submit" onclick="updateInvoice()">Update</button>
+    </div>
+  {{!-- </form> --}}
+
+</div>
+
 {{else}}
 <p>You must Login to view Invoice</p>
 {{/if}}
 
- 
- <script src="/js/invoice.js"></script>
+
+<script src="/js/invoice.js"></script>
