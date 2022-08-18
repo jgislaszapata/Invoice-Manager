@@ -20,9 +20,21 @@
 
     <header class="bg-primary">
       <h1 class="text-light fw-bold col">Invoice Manager+</h1>
-    </header>
+      <nav id="logout-nav">
+        
+      </nav>
 
+    </div>
+  </header>
+  <main class="container container-fluid mt-5" id="main-render">
+    <!-- Render the sub layout -->
+    {{{ body }}}
+  </main>
+  <footer>
 
+  </footer>
+  </div>
+ Jesus-17-1
     <div class="container-fluid">
       {{!-- <div class="row flex-nowrap"> --}}
         <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
@@ -57,19 +69,9 @@
                   <a href="/login" class="nav-link align-middle px-0">login</a>
                   {{/if}}
                 </nav>
-              </li>
+              </li> main
 
-            </ul>
-          </div>
-        </div>
-      {{!-- </div> --}}
-    </div>
 
-    <main class="container container-fluid mt-5">
-      <!-- Render the sub layout -->
-      {{{ body }}}
-    </main>
-  </div>
 
 
 
