@@ -1,10 +1,4 @@
 
-document.getElementById("send").addEventListener("click", sendEmail);
-
-
-
-
-
 const delInvoice = async (event) => {
   event.preventDefault();
   const invoice_number = event.target.parentNode.id;
@@ -16,19 +10,16 @@ const delInvoice = async (event) => {
     document.location = "/api/invoices";
     console.log(`${invoice_number} deleted from database`);
   } else {
-    //alert(response.statusText);
+   
     console.log(response.statusText);
   }
 };
 
 
-
-
 const editInv = async (event) => {
   event.preventDefault();
   const invoice_number = event.target.parentNode.id;
-
-  //document.location = '/api/invoices/edit/' + invoice_number;
+  
   const data = await fetch('/api/invoices/' + invoice_number, {
     method: 'GET',
     header: { 'Content-Type': 'application/json' },

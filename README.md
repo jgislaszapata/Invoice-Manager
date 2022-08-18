@@ -33,18 +33,18 @@ WHEN user clicks on edit/delete button in client page, THEN necessary details ar
 
 ## Installation steps
 
-* install the following
-npm init 
-npm install express
-npm install mysql2
-mpm install sequelize
-mpm install dotenv
-npm install bcrypt
-npm install express-session
-npm install handlebars
-npm install nodemailer
-npm install connect-session-sequelize
-npm install express-handlebars
+* install the following:
+npm init ,
+npm install express,
+npm install mysql2,
+mpm install sequelize,
+mpm install dotenv,
+npm install bcrypt,
+npm install express-session,
+npm install handlebars,
+npm install nodemailer,
+npm install connect-session-sequelize,
+npm install express-handlebars,
 
 
 * To invoke, in terminal give command - node server.js 
