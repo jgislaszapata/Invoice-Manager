@@ -6,6 +6,7 @@
     <th>Invoice Number</th>
     <th>Amount Due</th>
     <th>Due Date</th>
+    <th>Memo</th>
     <th>Edit</th>
     <th>Delete</th>
   </tr>
@@ -16,6 +17,7 @@
     <td> {{ Invoice.invoice_number}}</td>
     <td> {{Invoice.amount}} </td>
     <td> {{Invoice.due_date}} </td>
+    <td> {{Invoice.memo}} </td>
     {{!-- <td> <span class="change"> <i class="fa fa-edit"></i></span></td> --}}
     <td> <button type="submit" class="change" id={{Invoice.invoice_number}}><i class="fa fa-edit"></i></button></td>
     <td> <button type="submit" class="del" id={{Invoice.invoice_number}}><i class="fa fa-trash"></i></button></td>

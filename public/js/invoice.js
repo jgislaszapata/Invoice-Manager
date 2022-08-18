@@ -9,7 +9,7 @@ const delInvoice = async (event) => {
     header: { 'Content-Type': 'application/json' },
   });
   if (response.ok) {
-    //document.location.replace('invoices');
+    document.location = "/api/invoices";
     console.log(`${invoice_number} deleted from database`);
   } else {
     //alert(response.statusText);
