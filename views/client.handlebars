@@ -1,20 +1,54 @@
-
 {{#if loggedIn}}
 <table>
- <tr>
+  <tr>
     <th>Client Name</th>
+    <th>Client Id</th>
     <th>Email</th>
     <th>Phone</th>
+    <th>Edit</th>
+    <th>Delete</th>
   </tr>
-    
-{{#each data as |Client|}}
-    <tr>
+
+  {{#each data as |Client|}}
+  <tr>
     <td> {{Client.client_name }} </td>
+    <td> {{Client.id}} </td>
     <td> {{Client.client_email}} </td>
     <td> {{Client.client_phone}} </td>
-    </tr>
-{{/each}}
+    <td> <button type="submit" class="change" id={{Client.id}}><i class="fa fa-edit"></i></button></td>
+    <td> <button type="submit" class="del" id={{Client.id}}><i class="fa fa-trash"></i></button></td>
+  </tr>
+  {{/each}}
 </table>
+
+
+
+<div class="col-md-6" id="hide">
+  <h3>Edit Invoice</h3>
+
+  
+    <div class="form-group">
+      <label> Client Id: <span id="edit-id"> </span> </label>
+    </div>
+    <div class="form-group">
+      <label> Client Name:</label>
+      <input name="client_name" id="edit-name" class="form-input" type="text"/>
+
+    </div>
+    <div class="form-group">
+      <label>Client Email:</label>
+      <input name="client_email" id="edit-email" class="form-input" type="text" />
+    </div>
+    <div class="form-group">
+      <label>Client Phone:</label>
+      <input name="phone" id="edit-phone" class="form-input" type="text"/>
+    </div>
+    <div class="form-group">
+      <button class="" type="submit" onclick="updateClient()">Update</button>
+    </div>
+
+
+</div>
 
 {{else}}
 <p>you must be logged in to view client</p>
@@ -22,4 +56,4 @@
 
 
 
-    <script src="/js/client.js"></script>
+<script src="/js/client.js"></script>
