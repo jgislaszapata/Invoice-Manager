@@ -1,0 +1,104 @@
+{{!-- <!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Invoice</title>
+</head>
+
+<body>
+    <h1>Name: {{users.client_name}}</h1>
+    <li>Email: {{users.client_email}}</li>
+    <ul>
+       
+    
+        <li>Name: {{users.client_name}}</li>
+        
+        <li>Invoice Number: {{voice.invoice_number}}</li>
+        <li>Amount: {{voice.amount}}</li>
+        <li>Due Date: {{voice.due_date}}</li>
+        <br/>
+   
+    </ul>
+</body>
+</html> --}}
+
+<body>
+
+    <div class="container">
+        <div class="brand-section">
+            <div class="row">
+                <div class="col-6">
+                    <h1 class="text-white">INVOICE</h1>
+                </div>
+                <div class="col-6">
+                    <div class="company-details">
+                        <p class="text-white">Client Name {{users.client_name}}</p>
+                        <p class="text-white">assdad asd asd</p>
+                        <p class="text-white">+91 888555XXXX</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="body-section">
+            <div class="row">
+                <div class="col-6">
+                    <h2 class="heading">Invoice {{voice.invoice_number}}</h2>
+                    <p class="sub-heading">Tracking No. Invoice2025 </p>
+                    <p class="sub-heading">Due Date:{{voice.due_date}}  </p>
+                    <p class="sub-heading">Email Address: {{users.client_email}} </p>
+                </div>
+                <div class="col-6">
+                    <p class="sub-heading">Full Name:  </p>
+                    <p class="sub-heading">Address:  </p>
+                    <p class="sub-heading">Phone Number:  </p>
+                    <p class="sub-heading">City,State,Pincode:  </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="body-section">
+            <h3 class="heading">Ordered Items</h3>
+            <br>
+            <table class="table-bordered">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th class="w-20">Price</th>
+                        <th class="w-20">Quantity</th>
+                        <th class="w-20">Grandtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Product Name</td>
+                        <td>10</td>
+                        <td>1</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" class="text-right">Sub Total</td>
+                        <td> 10.XX</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" class="text-right">Tax Total %1X</td>
+                        <td> 2</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" class="text-right">Grand Total</td>
+                        <td> 12.XX</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <h3 class="heading">Payment Status: Paid</h3>
+            <h3 class="heading">Payment Mode: Cash on Delivery</h3>
+        </div>
+
+        <div class="body-section">
+           
+        </div>      
+    </div>      
+
+</body>

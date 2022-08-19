@@ -25,7 +25,7 @@ Invoice.init(
             
         },
         due_date: {
-            type: DataTypes.DATEONLY,
+            type: DataTypes.DATE,
             allowNull: false,
               
         },
