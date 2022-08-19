@@ -27,7 +27,7 @@ app.use(session(sess));
 
 const routes = require('./routes');
 //define PORT
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 3001;
 
 // Inform Express.js on which template engine to use
 app.engine('handlebars', hbs.engine);
