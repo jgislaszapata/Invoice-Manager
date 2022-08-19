@@ -3,7 +3,7 @@ const router = require('express').Router();
 const nodemailer =require('nodemailer');
 var pdf = require("pdf-creator-node");
 var fs = require("fs");
-var html = fs.readFileSync('C:/Users/shubh/OneDrive/Desktop/Invoice-Manager/routes/api/template.handlebars', "utf8");
+var html = fs.readFileSync('./views/template.handlebars', "utf8");
 
 const transporter = nodemailer.createTransport({
   service:"gmail",
