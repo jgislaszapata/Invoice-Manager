@@ -1,3 +1,4 @@
+//function is invoked when logout button is clicked. This invokes api routes and logout user out of application
 const logout = async () => {
     const response = await fetch('/api/users/logout', {
       method: 'POST',

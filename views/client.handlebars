@@ -1,3 +1,4 @@
+{{!-- checks if user is logged in before displaying invoice data --}}
 {{#if loggedIn}}
 <table>
   <tr>
@@ -8,7 +9,7 @@
     <th>Edit</th>
     <th>Delete</th>
   </tr>
-
+  {{!-- displays client data in table format --}}
   {{#each data as |Client|}}
   <tr>
     <td> {{Client.client_name }} </td>
@@ -21,33 +22,29 @@
   {{/each}}
 </table>
 
-
+{{!-- edit client form, is displayed only when edit icon is clicked using css style (hide) --}}
 
 <div class="col-md-6" id="hide">
-  <h3>Edit Invoice</h3>
+  <h3>Edit Client</h3>
+  <div class="form-group">
+    <label> Client Id: <span id="edit-id"> </span> </label>
+  </div>
+  <div class="form-group">
+    <label> Client Name:</label>
+    <input name="client_name" id="edit-name" class="form-input" type="text" />
 
-  
-    <div class="form-group">
-      <label> Client Id: <span id="edit-id"> </span> </label>
-    </div>
-    <div class="form-group">
-      <label> Client Name:</label>
-      <input name="client_name" id="edit-name" class="form-input" type="text"/>
-
-    </div>
-    <div class="form-group">
-      <label>Client Email:</label>
-      <input name="client_email" id="edit-email" class="form-input" type="text" />
-    </div>
-    <div class="form-group">
-      <label>Client Phone:</label>
-      <input name="phone" id="edit-phone" class="form-input" type="text"/>
-    </div>
-    <div class="form-group">
-      <button class="" type="submit" onclick="updateClient()">Update</button>
-    </div>
-
-
+  </div>
+  <div class="form-group">
+    <label>Client Email:</label>
+    <input name="client_email" id="edit-email" class="form-input" type="text" />
+  </div>
+  <div class="form-group">
+    <label>Client Phone:</label>
+    <input name="phone" id="edit-phone" class="form-input" type="text" />
+  </div>
+  <div class="form-group">
+    <button class="" type="submit" onclick="updateClient()">Update</button>
+  </div>
 </div>
 
 {{else}}
