@@ -1,6 +1,7 @@
 //Express package
 const express = require('express');
 const path = require('path');
+const routes = require('./routes');
 //import database (sequelize) connection
 const sequelize = require('./config/connection');
 //Import session package
@@ -25,7 +26,6 @@ const sess = {
 const app = express();
 app.use(session(sess));
 
-const routes = require('./routes');
 //define PORT
 const PORT = process.env.PORT || 3001;
 
