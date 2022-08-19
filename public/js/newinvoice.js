@@ -34,18 +34,13 @@ const createInvoice = async (event) => {
     if (response.ok) {
       console.log("New Invoice Added")
       //document.location.replace('/');
-document.getElementById('hide').style.display = 'none';
+//document.getElementById('hide').style.display = 'none';
+        var invoice=document.getElementById("invoiceadd");
+        invoice.style.display = "block";
       document.querySelector('#amount').value = "";
       document.querySelector("#ddate").value = "";
       document.querySelector("#memo").value = "";
       document.querySelector("#id").value = "";
-      var newh1 = document.createElement("h1");
-      newh1.style.display = "block"
-      newh1.style.border = "10px";
-      newh1.innerHTML = "New Invoice Generated";
-      var divToMoveTo = document.getElementById("heading");
-      divToMoveTo.insertBefore(newh1, divToMoveTo.childNodes[1]);
-
     }
   }
 }

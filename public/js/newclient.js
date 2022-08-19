@@ -8,7 +8,7 @@ const myfunction = async (event) => {
   
     if (name && email && phone) {
       // Send a POST request to the API endpoint
-      const response = await fetch('/api/clients/new', {
+      const response = await fetch('/api/clients/newclient', {
         method: 'POST',
         body: JSON.stringify({ name ,email, phone }),
         headers: { 'Content-Type': 'application/json' },
@@ -17,8 +17,13 @@ const myfunction = async (event) => {
       if (response.ok) {
         // If successful, redirect the browser to the profile page
         
-        alert('Client Added to Database');
-       // document.location.replace('/dashboard');
+        alert('New Client Added');
+        var add=document.getElementById("clientadd");
+        add.style.display = "block";
+      document.querySelector('#name').value = "";
+      document.querySelector("#email").value = "";
+      document.querySelector("#phone").value = "";
+        //document.location.replace('/homepage');
       } else {
         alert(response.statusText);
       }
@@ -28,8 +33,8 @@ const myfunction = async (event) => {
 document.getElementById("clientsubmit").addEventListener("click", myfunction);
 //document.querySelector(button).addEventListener('submit', myfunction);
 
-const response = await fetch('api/invoice', {
-    method: 'POST',
-    body: JSON.stringify(request.body)
-})
+// const response = await fetch('api/invoice', {
+//     method: 'POST',
+//     body: JSON.stringify(request.body)
+//})
 
