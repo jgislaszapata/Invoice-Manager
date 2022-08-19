@@ -22,7 +22,8 @@ const createInvoice = async (event) => {
   const amount = document.querySelector('#amount').value.trim();
   const ddate = document.querySelector('#ddate').value.trim();
   const memo = document.querySelector('#memo').value.trim();
-  const id = document.querySelector('#id').value.trim();
+  // const id = document.querySelector('#id').value.trim();
+  const id = document.getElementById('names').value;
 
   if (amount && ddate && memo && id) {
     const response = await fetch('/api/invoices/new', {
@@ -34,11 +35,11 @@ const createInvoice = async (event) => {
     if (response.ok) {
       console.log("New Invoice Added")
       //document.location.replace('/');
-document.getElementById('hide').style.display = 'none';
+// document.getElementById('hide').style.display = 'none';
       document.querySelector('#amount').value = "";
       document.querySelector("#ddate").value = "";
       document.querySelector("#memo").value = "";
-      document.querySelector("#id").value = "";
+      // document.querySelector("#id").value = "";
       var newh1 = document.createElement("h1");
       newh1.style.display = "block"
       newh1.style.border = "10px";
