@@ -1,4 +1,5 @@
 const router = require('express').Router();
+
 const nodemailer =require('nodemailer');
 var pdf = require("pdf-creator-node");
 var fs = require("fs");
@@ -9,9 +10,9 @@ const transporter = nodemailer.createTransport({
   auth:{
     user:"projectnode6@gmail.com",
     pass:"wwdotsoapopxlpfo"
-
   }
 });
+
 
 //for pdf Generator
 var options1 = {
@@ -33,8 +34,9 @@ var options1 = {
         }
     };
 
-
+//import client and invoice models
 const { Client, Invoice } = require('../../models');
+
 const { update } = require('../../models/user');
 const { template } = require('handlebars');
 
@@ -49,16 +51,13 @@ router.get('/', async (req, res) => {
         attributes: ['client_name']
       }]
     });
-
     const allInvoices = invoiceData.map((allInvoices) => allInvoices.get({ plain: true }));
-    
+
     res.render('invoice',
       {
         allInvoices,
         loggedIn: req.session.loggedIn,
-        
       });
-   
   } catch (err) {
     res.status(500).json(err);
   }
@@ -66,9 +65,9 @@ router.get('/', async (req, res) => {
 
 
 
-router.get('/new', async(req, res) => {
-     res.render("newinvoice");
-    })
+router.get('/new', async (req, res) => {
+  res.render("newinvoice");
+})
 // router.post('/new', async(req, res) => {
 //     try {
 //         const clientData = await Client.create({
@@ -84,6 +83,7 @@ router.get('/new', async(req, res) => {
 //       }
 // });
 
+
 //find invoice by ref_num(primary key)
 //this route gets invoked when edit icon is clicked on invoice page,
 //allows user to edit invoice data
@@ -96,38 +96,35 @@ router.get('/:id', async (req, res) => {
       return;
     } else {
       const invDetail = invoiceData.get({ plain: true });
-     
-      
       res.status(200).json(invDetail);
-    
     }
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-//find invoice by ref_num(primary key)
-router.get('/edit/:id', async (req, res) => {
-  try {
-    const invoiceData = await Invoice.findByPk(req.params.id);
+// //find invoice by ref_num(primary key)
+// router.get('/edit/:id', async (req, res) => {
+//   try {
+//     const invoiceData = await Invoice.findByPk(req.params.id);
 
-    if (!invoiceData) {
-      res.status(404).json({ message: 'No Invoice found with this id!' });
-      return;
-    } else {
-      const invDetail = invoiceData.get({ plain: true });
-      res.render('invoice',
-        {
-          invDetail,
-          loggedIn: req.session.loggedIn,
-          
-        });
-      
-    }
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+//     if (!invoiceData) {
+//       res.status(404).json({ message: 'No Invoice found with this id!' });
+//       return;
+//     } else {
+//       const invDetail = invoiceData.get({ plain: true });
+//       res.render('invoice',
+//         {
+//           invDetail,
+//           loggedIn: req.session.loggedIn,
+
+//         });
+
+//     }
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 //create a new invoice 
 router.post('/new', async (req, res) => {
@@ -198,29 +195,26 @@ console.log("sent: "+info.response);
 //update invoice details
 router.put('/:id', async (req, res) => {
   console.log(req.body);
-  try{
+  try {
     const updatedInvoice = await Invoice.update({
 
       amount: req.body.amount,
       memo: req.body.memo,
       due_date: req.body.due_date,
-      
     },
       {
         where: {
           invoice_number: req.params.id
         },
       });
-      if(updatedInvoice){
-        //res.redirect(302, '/api/invoices')
-        res.status(200).json(updatedInvoice);
-      } else {
-        res.status(500).json(err);
-      }
-  } catch  (err){
+    if (updatedInvoice) {
+      res.status(200).json(updatedInvoice);
+    } else {
+      res.status(500).json(err);
+    }
+  } catch (err) {
     res.status(400).json(err);
-  } 
-   
+  }
 });
 
 //delete a invoice
@@ -238,10 +232,8 @@ router.delete('/:id', async (req, res) => {
     } else {
       res.render('invoice'), {
         loggedIn: req.session.loggedIn,
-        editInvoice: false,
       }
     }
-
     res.status(200).json(invoiceData);
   } catch (err) {
     res.status(500).json(err);

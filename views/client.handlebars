@@ -1,28 +1,58 @@
-<header class="bg-primary">
-        <div>
-            <h1 class="text-light fw-bold text-center p-3">Client Information</h1>
-        </div>
-        
-    </header>
-    
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-light">
-                <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-dark min-vh-100">
-                    <a href="/client.html" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-                        <span class="fs-5 d-none p-2 d-sm-inline border border-primary bg-secondary text-white border rounded-pill ">Existing Client</span>
-                    </a>
-                
-                    <a href="/assets/addnewclient.html" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-                        <span class=" fs-5 d-none p-2 d-sm-inline border border-primary bg-secondary text-white border rounded-pill ">New Client</span>
-                    </a>
-                    <a href="/client.html" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-                        <span class="fs-5 d-none p-2 d-sm-inline border border-primary bg-secondary text-white border rounded-pill ">Delete Client</span>
-                    </a>
-                    <a href="/client.html" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-                        <span class="fs-5 d-none p-2 d-sm-inline border border-primary bg-secondary text-white border rounded-pill ">Update Client</span>
-                    </a>
-                </div>   
-            </div>
-        </div>
-    </div  >  
+{{!-- checks if user is logged in before displaying invoice data --}}
+{{#if loggedIn}}
+<table>
+  <tr>
+    <th>Client Name</th>
+    <th>Client Id</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+  {{!-- displays client data in table format --}}
+  {{#each data as |Client|}}
+  <tr>
+    <td> {{Client.client_name }} </td>
+    <td> {{Client.id}} </td>
+    <td> {{Client.client_email}} </td>
+    <td> {{Client.client_phone}} </td>
+    <td> <button type="submit" class="change" id={{Client.id}}><i class="fa fa-edit"></i></button></td>
+    <td> <button type="submit" class="del" id={{Client.id}}><i class="fa fa-trash"></i></button></td>
+  </tr>
+  {{/each}}
+</table>
+
+{{!-- edit client form, is displayed only when edit icon is clicked using css style (hide) --}}
+
+<div class="col-md-6" id="hide">
+  <h3>Edit Client</h3>
+  <form class="form-group">
+      <div class="form-group">
+    <label> <h5>Client Id: <span id="edit-id"> </span></h5> </label>
+  </div>
+  <div class="form-group">
+    <label> Client Name:</label>
+    <input name="client_name" id="edit-name" class="form-input" type="text" />
+
+  </div>
+  <div class="form-group">
+    <label>Client Email:</label>
+    <input name="client_email" id="edit-email" class="form-input" type="text" />
+  </div>
+  <div class="form-group">
+    <label>Client Phone:</label>
+    <input name="phone" id="edit-phone" class="form-input" type="text" />
+  </div>
+  <div class="form-group">
+    <button class="btn btn-primary" type="submit" onclick="updateClient()">Update</button>
+  </div>
+  </form>
+</div>
+
+{{else}}
+<p>you must be logged in to view client</p>
+{{/if}}
+
+
+
+<script src="/js/client.js"></script>

@@ -1,3 +1,5 @@
+//function gets invoked when login button is clicked on login form
+
 const loginFormHandler = async (event) => {
     event.preventDefault();
   
@@ -15,15 +17,14 @@ const loginFormHandler = async (event) => {
   
       if (response.ok) {
         // If successful, redirect the browser to the profile page
-
         document.location.replace('/');
-
       } else {
         alert(response.statusText);
       }
     }
   };
   
+  //function gets invoked when signup button is clicked on sign up form
   const signupFormHandler = async (event) => {
     event.preventDefault();
   
@@ -48,10 +49,12 @@ const loginFormHandler = async (event) => {
     }
   };
   
+  //add event listener to signin button on login form
   document
     .querySelector('.login-form')
     .addEventListener('submit', loginFormHandler);
   
+  //add event listener to signup button on signup form 
   document
     .querySelector('.signup-form')
     .addEventListener('submit', signupFormHandler);

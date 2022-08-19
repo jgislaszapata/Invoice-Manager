@@ -15,17 +15,35 @@
 </head>
 
 <body>
-  <div class="flex-column">
 
+  <header class="navbar bg-primary">
+        <div class="container-fluid text-light">
+                <span class="navbar-brand mb-0 h1 bg-primary text-light fw-bold">Invoice Manager+</span>
+                <ul class="nav">
+                      <li class="nav-item text-white bg-primary p-3">
+                        <a class="nav-link active text-light" aria-current="page" href="/api/invoices/new">New Invoice</a>
+                      </li>
+                      <li class="nav-item text-white bg-primary p-3">
+                        <a class="nav-link active text-light" aria-current="page" href="/api/invoices/">Manage Invoices</a>
+                      </li>
+                      <li class="nav-item text-white bg-primary p-3">
+                        <a class="nav-link active text-light" aria-current="page" href="/api/clients/">Manage Client</a>
+                      </li>
+                      <li class="nav-item" id="newclient">
+                        <a class="nav-link align-middle px-0" href="/api/clients/new">Add Client</a>
+                      </li>
+                      <li class="nav-item text-white bg-primary p-3">
+                        {{#if loggedIn}}
+                        <button id="logout" class="btn-no-style">Logout</button>
+                          {{!-- <button class=" btn-no-style nav-link active text-warning " aria-current="page"  id="logout-nav">Logout</button> --}}
+                        {{else}}
+                          <a href="/login" class="nav-link active text-warning align-middle px-0">Login</a>
+                        {{/if}}
+                      </li>
 
-    <header class="bg-primary">
-      <h1 class="text-light fw-bold col">Invoice Manager+</h1>
-      <nav id="logout-nav">
-        
-      </nav>
-
-    </div>
-  </header>
+                </ul>
+        </div>
+    </header>
   <main class="container container-fluid mt-5" id="main-render">
     <!-- Render the sub layout -->
     {{{ body }}}
@@ -33,48 +51,6 @@
   <footer>
 
   </footer>
-  </div>
- Jesus-17-1
-    <div class="container-fluid">
-      {{!-- <div class="row flex-nowrap"> --}}
-        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
-          <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-            <span class="fs-5 d-none d-sm-inline">My Dashboard</span>
-            <ul class="nav nav-pills flex-column" id="menu">
-              <li class="nav-item">
-                <a href="/api/invoices/new" class="nav-link align-middle px-0">
-                  <span>New Invoice</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/api/invoices/" class="nav-link align-middle px-0">
-                  <span>Manage Invoices</span>
-                </a>
-              </li>
-              <li class="nav-item" id="newclient">
-                <a href="/api/clients/" class="nav-link align-middle px-0">
-                  <span>Add/Manage Client</span>
-                </a>
-              </li>
-              <li class="nav-item" id="newclient">
-                <a href="/api/clients/new" class="nav-link align-middle px-0">
-                  <span>Add Client</span>
-                </a>
-              </li>
-              <li class="nav-item" id="newclient">
-                <nav>
-                  {{#if loggedIn}}
-                  <button class="no-button" id="logout">logout</button>
-                  {{else}}
-                  <a href="/login" class="nav-link align-middle px-0">login</a>
-                  {{/if}}
-                </nav>
-              </li> main
-
-
-
-
-
 
   <!-- Render script for logged in users only -->
   {{#if loggedIn}}

@@ -27,3 +27,9 @@ const myfunction = async (event) => {
 }
 document.getElementById("clientsubmit").addEventListener("click", myfunction);
 //document.querySelector(button).addEventListener('submit', myfunction);
+
+const response = await fetch('api/invoice', {
+    method: 'POST',
+    body: JSON.stringify(request.body)
+})
+
