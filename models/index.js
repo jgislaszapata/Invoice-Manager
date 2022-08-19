@@ -9,6 +9,7 @@ Client.hasMany(Invoice, {
     onDelete: 'SET NULL'
 });
 
+//invoice belongs to client
 Invoice.belongsTo(Client, {
     foreignKey: 'id'
 });

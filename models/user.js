@@ -4,7 +4,7 @@ const sequelize = require('../config/connection');
 //import important parts of sequelize library
 const { Model, DataTypes } = require('sequelize');
 
-//library for password 
+//library for password encryptions
 const bcrypt = require('bcrypt');
 
 //initialize User model by extending off sequelize model class

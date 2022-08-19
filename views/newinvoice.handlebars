@@ -1,37 +1,31 @@
-    <header>
-        <h1 class="bg-primary text-light fw-bold">Invoice Manager</h1>
-    </header>
-    
-    <section>
-        <h2 id = "heading" class="text-bg-secondary" id="new-invoice-heading">New Invoice</h2>
-    </section>
-    <form class="signup-form">
-        <div class="row">
-             <input id="amount" type="text" class="form-control" placeholder="Amount">
+<section class="hide">
+    <h2 id="heading" class="text-bg-secondary" id="new-invoice-heading">New Invoice</h2>
+</section>
+<form class="signup-form">
+    <div class="col">
+        <input id="id" type="text" class="form-control" placeholder="Clientid">
+    </div>
+
+    <div class="row">
+        <input id="amount" type="text" class="form-control" placeholder="Enter Amount">
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <input id="ddate" type="text" class="form-control" placeholder="Due Date">
         </div>
-   
-    
-        <div class="row">
-            <div class="col">
-                <input id="ddate"type="text" class="form-control" placeholder="Due Date">
-              </div>
+    </div>
+
+    <div class="row ">
+        <div>
+            <input id="memo" type="text" class="form-control" placeholder="Notes">
         </div>
-    
-    
-        <div class="row ">
-            <div>
-                <input id="memo" type="text" class="form-control" placeholder="Notes">
-            </div>
-            <div class="col">
-                <input id="id" type="text" class="form-control" placeholder="Clientid">
-            </div>
-        </div>
-    </form>
-    <button class="btn btn-primary" id="newinvoice" type="submit" >Save Invoice</button>
+    </div>
+</form>
+
+<button class="btn btn-primary" id="newinvoice" type="submit">Save Invoice</button>
+
 </body>
 <script src="/js/newinvoice.js"></script>
+
 </html>
-
-
-
-
