@@ -29,8 +29,9 @@
 {{!-- edit invoice form, is displayed only when edit icon is clicked using css style (hide) --}}
 <div class="col-md-6" id="hide">
   <h3>Edit Invoice</h3>
+  <form class="form-group">
   <div class="form-group">
-    <label> Invoice Number: <span id="edit-invoice-num"> </span> </label>
+    <label><h5> Invoice Number: <span id="edit-invoice-num"> </span> </h5></label>
   </div>
   <div class="form-group">
     <label> Amount</label>
@@ -46,8 +47,10 @@
     <input name="memo" id="edit-memo" class="form-input" type="text" />
   </div>
   <div class="form-group">
-    <button class="" type="submit" onclick="updateInvoice()">Update</button>
+    <button class="btn btn-primary" type="submit" onclick="updateInvoice()">Update</button>
   </div>
+  
+  </form>
 </div>
 
 {{else}}

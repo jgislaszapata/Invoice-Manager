@@ -26,8 +26,9 @@
 
 <div class="col-md-6" id="hide">
   <h3>Edit Client</h3>
-  <div class="form-group">
-    <label> Client Id: <span id="edit-id"> </span> </label>
+  <form class="form-group">
+      <div class="form-group">
+    <label> <h5>Client Id: <span id="edit-id"> </span></h5> </label>
   </div>
   <div class="form-group">
     <label> Client Name:</label>
@@ -43,8 +44,9 @@
     <input name="phone" id="edit-phone" class="form-input" type="text" />
   </div>
   <div class="form-group">
-    <button class="" type="submit" onclick="updateClient()">Update</button>
+    <button class="btn btn-primary" type="submit" onclick="updateClient()">Update</button>
   </div>
+  </form>
 </div>
 
 {{else}}
