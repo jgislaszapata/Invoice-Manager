@@ -65,6 +65,11 @@ npm install express-handlebars,
 ### Live URL: 
 
 
-
+Contributors: 
+ - Aldo Pelayo || Github: aldopelayo
+ - Oluwaseyi M Oshinowo || Github: applespicy
+ - Shubhra Salunke || Github: shubhra8
+ - Sivaranjani Jayaprakash || Github: Sivaparam
+ - Jesus Islas || Github: jgislaszapata
 
 
