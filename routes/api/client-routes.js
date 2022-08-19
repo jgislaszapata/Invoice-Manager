@@ -26,7 +26,9 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/new', async (req, res) => {
-  res.render("newclient");
+  res.render("newclient", {
+    loggedIn: req.session.loggedIn,
+  });
 });
 
 //create a new client 
