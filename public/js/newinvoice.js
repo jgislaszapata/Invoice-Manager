@@ -1,18 +1,4 @@
-// const nodemailer = require('nodemailer');
-// const transporter = nodemailer.createTransport(transporter,{
-//   service:"gmail",
-//   auth:{
-//     user:"shubrasalunkecse@gmail.com",
-//     pass:""
 
-//   }
-// });
-// const options = {
-//   from :"shubrasalunkecse@gmail.com",
-//   to: "swapnilpawar.ibm@gmail.com",
-//   subject: "node project with JS",
-//   text:"Test mail for Node"
-// }
 
 
 const createInvoice = async (event) => {
@@ -35,6 +21,7 @@ const createInvoice = async (event) => {
     if (response.ok) {
       console.log("New Invoice Added")
       //document.location.replace('/');
+
 // document.getElementById('hide').style.display = 'none';
       document.querySelector('#amount').value = "";
       document.querySelector("#ddate").value = "";
@@ -46,6 +33,15 @@ const createInvoice = async (event) => {
       newh1.innerHTML = "New Invoice Generated";
       var divToMoveTo = document.getElementById("heading");
       divToMoveTo.insertBefore(newh1, divToMoveTo.childNodes[1]);
+
+
+//document.getElementById('hide').style.display = 'none';
+        var invoice=document.getElementById("invoiceadd");
+        invoice.style.display = "block";
+      document.querySelector('#amount').value = "";
+      document.querySelector("#ddate").value = "";
+      document.querySelector("#memo").value = "";
+      document.querySelector("#id").value = "";
 
     }
   }

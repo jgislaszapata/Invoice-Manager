@@ -109,8 +109,12 @@ form {
   form .form-textarea {
     display: block;
   }
-
-  
+#clientadd{
+    display: none;
+}
+ #invoiceadd{
+        display: none;
+    }
 
 btn-no-style {
     background: none;

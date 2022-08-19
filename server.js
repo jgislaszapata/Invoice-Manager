@@ -1,6 +1,7 @@
 //Express package
 const express = require('express');
 const path = require('path');
+const routes = require('./routes');
 //import database (sequelize) connection
 const sequelize = require('./config/connection');
 //Import session package
@@ -25,9 +26,9 @@ const sess = {
 const app = express();
 app.use(session(sess));
 
-const routes = require('./routes');
 //define PORT
-const PORT = process.env.PORT || 3001;
+// const PORT = process.env.PORT || 3001;
+app.set('port',process.env.PORT || 3001);
 
 // Inform Express.js on which template engine to use
 app.engine('handlebars', hbs.engine);
@@ -37,13 +38,19 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
 
 //turn on routes
 app.use(routes);
 
 //sync sequelize models to the database and then turn on the server to begin listening
-sequelize.sync().then(() => {
-    app.listen(PORT, () => console.log(`App listening on port ${PORT}!`));
+// sequelize.sync({force: false}).then(() => {
+//     app.listen(PORT, () => console.log(`App listening on port ${PORT}!`));
+// });
+sequelize.sync({ force: false }).then(() => {
+  app.listen(process.env.PORT || 3001, () => console.log(`Now listening on ${app.get('port')}`));
 });
 
 console.log("Welcome to invoice manager");

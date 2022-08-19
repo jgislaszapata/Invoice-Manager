@@ -5,13 +5,25 @@
     <div class="col-md-6">
         <form class="form-group">
             <div class="form-group">
+
+                <label> Client Id</label>
+                <input id="id" type="text" class="form-control" placeholder="Clientid">
+
                 <label> Client Name</label>
                 <select name="name" id="names">
                     {{#each allClients as |Client| }}
+
                     <option value={{Client.id}} id={{Client.id}}>{{Client.client_name}}</option>
                     {{/each}}
                     {{!-- <input id="id" type="text" class="form-control" placeholder="Clientid"> --}}
                 </select>
+
+                {{/each}}
+                 </select>
+                {{!-- <input id="id" type="text" class="form-control" placeholder="Clientid"> --}}
+
+            </div>
+
 
                 <div class="form-group">
                     <label> Amount</label>
@@ -31,8 +43,14 @@
                 </div>
                 <div class="form-group">
 
-                    <button class="btn btn-primary" id="newinvoice" type="submit">Save Invoice</button>
-                </div>
+
+                    
+              
+
+                <button class="btn btn-primary" id="newinvoice" type="submit">Create And Send Email</button>
+                  </div>
+                <h3 id="invoiceadd">New Invoice Is Added</h3>
+
             </div>
         </form>
     </div>
