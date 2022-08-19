@@ -1,3 +1,4 @@
+
 // Function gets invoked when delete icon is clicked on invoice table. invoice number is passed as parameter to api routes. 
 //on success displays invoice table on screen
 const delInvoice = async (event) => {
