@@ -3,7 +3,7 @@ const router = require('express').Router();
 const nodemailer =require('nodemailer');
 var pdf = require("pdf-creator-node");
 var fs = require("fs");
-var html = fs.readFileSync('C:/Users/shubh/OneDrive/Desktop/Invoice-Manager/routes/api/template.handlebars', "utf8");
+var html = fs.readFileSync('./views/template.handlebars', "utf8");
 
 const transporter = nodemailer.createTransport({
   service:"gmail",
@@ -64,10 +64,23 @@ router.get('/', async (req, res) => {
 });
 
 
-
+//routes gets invoked when new invoice button is clicked
 router.get('/new', async (req, res) => {
-  res.render("newinvoice");
-})
+  try {
+    const clientData = await Client.findAll({
+     attributes: { exclude: ['client_email', 'client_phone']}
+    });
+    const allClients = clientData.map((allClient) => allClient.get({ plain: true }));
+
+    res.render('newinvoice',
+      {
+        allClients,
+        loggedIn: req.session.loggedIn,
+      });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+  });
 // router.post('/new', async(req, res) => {
 //     try {
 //         const clientData = await Client.create({

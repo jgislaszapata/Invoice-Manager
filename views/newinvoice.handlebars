@@ -1,12 +1,22 @@
-{{!-- {{#if loggedIn}} --}}
+{{#if loggedIn}}
 <div class="col-md-6" >
     <h2 id="heading" class="text-bg-secondary" id="new-invoice-heading">New Invoice</h2>
 
     <div class="col-md-6">
         <form class="form-group">
             <div class="form-group">
+
                 <label> Client Id</label>
                 <input id="id" type="text" class="form-control" placeholder="Clientid">
+
+                <label> Client Name</label>
+                <select name="name" id="names" >
+                    {{#each allClients as |Client| }}
+                    <option value={{Client.id}}>{{Client.client_name}}</option>
+                {{/each}}
+                 </select>
+                {{!-- <input id="id" type="text" class="form-control" placeholder="Clientid"> --}}
+
             </div>
 
             <div class="form-group">
@@ -32,8 +42,8 @@
             </div>
         </form>
     </div>
-    {{!-- {{else}}
+    {{else}}
     <p>You must Login to view Invoice</p>
-    {{/if}} --}}
+    {{/if}}
 
     <script src="/js/newinvoice.js"></script>
