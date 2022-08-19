@@ -1,5 +1,5 @@
 {{#if loggedIn}}
-<div class="col-md-6" >
+<div class="col-md-6">
     <h2 id="heading" class="text-bg-secondary" id="new-invoice-heading">New Invoice</h2>
 
     <div class="col-md-6">
@@ -10,35 +10,47 @@
                 <input id="id" type="text" class="form-control" placeholder="Clientid">
 
                 <label> Client Name</label>
-                <select name="name" id="names" >
+                <select name="name" id="names">
                     {{#each allClients as |Client| }}
-                    <option value={{Client.id}}>{{Client.client_name}}</option>
+
+                    <option value={{Client.id}} id={{Client.id}}>{{Client.client_name}}</option>
+                    {{/each}}
+                    {{!-- <input id="id" type="text" class="form-control" placeholder="Clientid"> --}}
+                </select>
+
                 {{/each}}
                  </select>
                 {{!-- <input id="id" type="text" class="form-control" placeholder="Clientid"> --}}
 
             </div>
 
-            <div class="form-group">
-                <label> Amount</label>
-                <input id="amount" type="text" class="form-control" placeholder="Enter Amount">
-            </div>
 
-            <div class="form-group">
-                <label> Due Date</label>
-                <input id="ddate" type="text" class="form-control" placeholder="Due Date">
+                <div class="form-group">
+                    <label> Amount</label>
+                    <input id="amount" type="text" class="form-control" placeholder="Enter Amount">
+                </div>
 
-            </div>
+                <div class="form-group">
+                    <label> Due Date</label>
+                    <input id="ddate" type="text" class="form-control" placeholder="Due Date">
 
-            <div class="form-group">
-                <label> Notes</label>
-                <input id="memo" type="text" class="form-control" placeholder="Notes">
+                </div>
 
-            </div>
-            <div class="form-group">
+                <div class="form-group">
+                    <label> Notes</label>
+                    <input id="memo" type="text" class="form-control" placeholder="Notes">
+
+                </div>
+                <div class="form-group">
+
+
+                    
+              
 
                 <button class="btn btn-primary" id="newinvoice" type="submit">Create And Send Email</button>
+                  </div>
                 <h3 id="invoiceadd">New Invoice Is Added</h3>
+
             </div>
         </form>
     </div>
