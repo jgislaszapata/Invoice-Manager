@@ -1,18 +1,42 @@
 const router = require('express').Router();
 const nodemailer =require('nodemailer');
+var pdf = require("pdf-creator-node");
+var fs = require("fs");
+var html = fs.readFileSync('C:/Users/shubh/OneDrive/Desktop/Invoice-Manager/routes/api/template.handlebars', "utf8");
+
 const transporter = nodemailer.createTransport({
   service:"gmail",
   auth:{
-    user:"",
-    pass:""
+    user:"projectnode6@gmail.com",
+    pass:"wwdotsoapopxlpfo"
 
   }
 });
 
+//for pdf Generator
+var options1 = {
+        format: "A3",
+        orientation: "portrait",
+        border: "10mm",
+        timeout: 300000,
+        header: {
+            height: "45mm",
+            contents: '<div style="text-align: center;">Author: Shubhra Salunke</div>'
+        },
+        footer: {
+            height: "28mm",
+            contents: {
+                first: 'Cover page',
+                default: '<span style="color: #444;">{{page}}</span>/<span>{{pages}}</span>', // fallback value
+                last: 'Last Page'
+            }
+        }
+    };
 
 
 const { Client, Invoice } = require('../../models');
 const { update } = require('../../models/user');
+const { template } = require('handlebars');
 
 
 //find all invoice from database
@@ -114,29 +138,59 @@ router.post('/new', async (req, res) => {
     memo: req.body.memo,
     id: req.body.id,
   })
+  const voice=invoiceData.get({ plain: true });
+  console.log(voice);
   const clientData = await Client.findOne({
       where: {
         id: req.body.id,
       },
     });
-  
-  const user = clientData.get({ plain: true });
-  console.log(user);
-  const options = {
-  from :"",
+   //var users= [];
+   const users = clientData.get({ plain: true });
+   
+  //console.log(users);
+   ///
+   var document = {
+  html: html,
+  data: {
+    users,voice,
+  },
+  path: "./invoice.pdf",
+  type: "",
+};
+
+pdf.create(document, options1)
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+   
+ const options = {
+  from :"projectnode6@gmail.com",
   to: `${clientData.client_email}`,
   subject: "node project with JS",
-  text:`Hello ${clientData.client_name} bill amount ${req.body.amount} is due on ${req.body.ddate}`
+  text:`Hello ${clientData.client_name} bill amount ${req.body.amount} is due on ${req.body.ddate}`,
+  attachments: [
+        {
+            filename: 'invoice.pdf',
+             path: './invoice.pdf',
+            contentType: 'application/pdf'
+            
+        }
+    ] 
 }
-  transporter.sendMail(options,function(err,info){
+ await transporter.sendMail(options, function(err,info){
 if(err){
   console.log(err);
   return;
 }
 console.log("sent: "+info.response);
   })
-    res.status(200).json(invoiceData);
-  } catch (err) {
+     res.status(200).json(invoiceData);
+  }
+   catch (err) {
     res.status(400).json(err);
   }
 });

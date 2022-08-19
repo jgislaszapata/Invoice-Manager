@@ -34,6 +34,8 @@
     "mysql": "^2.18.1",
     "mysql2": "^2.3.3",
     "nodemailer": "^6.7.8",
+    "pdf-creator-node": "^2.3.5",
+    "pdfkit": "^0.13.0",
     "sequelize": "^6.21.3"
   }
 }
