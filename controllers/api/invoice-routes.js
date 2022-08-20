@@ -4,6 +4,7 @@ const nodemailer =require('nodemailer');
 var pdf = require("pdf-creator-node");
 var fs = require("fs");
 var html = fs.readFileSync('./views/template.handlebars', "utf8");
+var options={};
 
 const transporter = nodemailer.createTransport({
   service:"gmail",
@@ -19,7 +20,6 @@ var options1 = {
         format: "A3",
         orientation: "portrait",
         border: "10mm",
-        timeout: 300000,
         header: {
             height: "45mm",
             contents: '<div style="text-align: center;">Author: Shubhra Salunke</div>'
@@ -168,7 +168,6 @@ router.post('/new', async (req, res) => {
   path: "./invoice.pdf",
   type: "",
 };
-
 pdf.create(document, options1)
     .then((res) => {
       console.log(res);
@@ -176,8 +175,8 @@ pdf.create(document, options1)
     .catch((error) => {
       console.error(error);
     });
-   
- const options = {
+  
+ options = {
   from :"projectnode6@gmail.com",
   to: `${clientData.client_email}`,
   subject: "node project with JS",
@@ -191,13 +190,8 @@ pdf.create(document, options1)
         }
     ] 
 }
- await transporter.sendMail(options, function(err,info){
-if(err){
-  console.log(err);
-  return;
-}
-console.log("sent: "+info.response);
-  })
+
+    sendMail();
      res.status(200).json(invoiceData);
   }
    catch (err) {
@@ -205,6 +199,15 @@ console.log("sent: "+info.response);
   }
 });
 
+function sendMail(){
+transporter.sendMail(options, function(err,info){
+if(err){
+  console.log(err);
+  return;
+}
+console.log("sent: "+info.response);
+  })
+}
 //update invoice details
 router.put('/:id', async (req, res) => {
   console.log(req.body);
