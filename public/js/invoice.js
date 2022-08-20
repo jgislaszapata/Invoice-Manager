@@ -12,7 +12,7 @@ const delInvoice = async (event) => {
     document.location = "/api/invoices";
     console.log(`${invoice_number} deleted from database`);
   } else {
-    alert("Oops.. Someting went wrong...");
+   
     console.log(response.statusText);
   }
 };
@@ -35,7 +35,7 @@ const editInv = async (event) => {
     document.getElementById('edit-memo').value = data.memo;
     document.getElementById('edit-due-date').value = data.due_date;
   } else {
-    alert("Oops.. Someting went wrong...");
+    
     console.log(response);
   }
 };
