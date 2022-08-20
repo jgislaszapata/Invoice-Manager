@@ -1,7 +1,7 @@
 //Express package
 const express = require('express');
 const path = require('path');
-const routes = require('./routes');
+const routes = require('./controllers');
 //import database (sequelize) connection
 const sequelize = require('./config/connection');
 //Import session package
@@ -38,9 +38,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// app.get("/", (req, res) => {
-//   res.sendFile(path.join(__dirname, "public", "index.html"));
-// });
+app.get('/', (req, res) => {
+  res.render("homepage")
+    });
 
 //turn on routes
 app.use(routes);
