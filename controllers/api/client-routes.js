@@ -25,6 +25,12 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.get('/new', async (req, res) => {
+  res.render("newclient", {
+    loggedIn: req.session.loggedIn,
+  });
+});
+
 //create a new client 
 //this routes is invoked when add new client is clicked and updates the information to client table
 router.post('/newclient', async (req, res) => {
