@@ -38,17 +38,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', (req, res) => {
-  res.render("homepage")
-    });
+
 
 //turn on routes
 app.use(routes);
 
-//sync sequelize models to the database and then turn on the server to begin listening
-// sequelize.sync({force: false}).then(() => {
-//     app.listen(PORT, () => console.log(`App listening on port ${PORT}!`));
-// });
+
 sequelize.sync({ force: false }).then(() => {
   app.listen(process.env.PORT || 3001, () => console.log(`Now listening on ${app.get('port')}`));
 });
