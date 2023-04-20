@@ -2,6 +2,20 @@
 <html lang="en">
 
 <head>
+  <style>
+.bg-image{
+background-color: #cdbfb1;
+height: 100vh;
+width:100%
+
+}
+.navbar{
+  background-color: #2d545e;
+}
+.nav-item{
+  background-color: #2d545e;
+}
+  </style>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,35 +30,13 @@
 
 <body>
 
-  <header class="navbar bg-primary">
-        <div class="container-fluid text-light">
-                <span class="navbar-brand mb-0 h1 bg-primary text-light fw-bold">Invoice Manager+</span>
-                <ul class="nav">
-                      <li class="nav-item text-white bg-primary p-3">
-                        <a class="nav-link active text-light" aria-current="page" href="/api/invoices/new">New Invoice</a>
-                      </li>
-                      <li class="nav-item text-white bg-primary p-3">
-                        <a class="nav-link active text-light" aria-current="page" href="/api/invoices/">Manage Invoices</a>
-                      </li>
-                      <li class="nav-item text-white bg-primary p-3">
-                        <a class="nav-link active text-light" aria-current="page" href="/api/clients/">Manage Client</a>
-                      </li>
-                      <li class="nav-item text-white bg-primary p-3" id="newclient">
-                        <a class="nav-link active text-light" aria-current="page" href="/api/clients/new">Add Client</a>
-                      </li>
-                      <li class="nav-item text-white bg-primary p-3">
-                        {{#if loggedIn}}
-                        <button id="logout" class="btn-no-style">Logout</button>
-                          {{!-- <button class=" btn-no-style nav-link active text-warning " aria-current="page"  id="logout-nav">Logout</button> --}}
-                        {{else}}
-                          <a href="/login" class="nav-link active text-warning align-middle px-0">Login</a>
-                        {{/if}}
-                      </li>
-
-                </ul>
-        </div>
-    </header>
-  <main class="container container-fluid mt-5" id="main-render">
+  <header class="navbar">
+      <div class="container-fluid text-light">
+        <span class="navbar-brand mb-0 h1  text-light fw-bold">Invoice Manager+</span>
+       <button class="btn btn-primary"style="background-color:#2d545e;border-radius: 15px;border-color: white; "> <h3 style="font-size: large;"><span><a style="color:white;font-weight:bold;" href="/login" class="nav-link active  align-middle px-0">Login</a></span></h3></button>
+        </header>
+  <main class="bg-image" id="main-render"
+            >
     <!-- Render the sub layout -->
     {{{ body }}}
   </main>

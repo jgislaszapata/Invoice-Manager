@@ -1,6 +1,35 @@
 {{#if loggedIn}}
+<header class="navbar">
+    <div class="container-fluid text-light">
+        <span class="navbar-brand mb-0 h1  text-light fw-bold">Invoice Manager+</span>
+        <ul class="nav">
+            <li class="nav-item text-white  p-3">
+                <a class="nav-link active text-light" aria-current="page" href="/api/invoices/new">New Invoice</a>
+            </li>
+            <li class="nav-item text-white  p-3">
+                <a class="nav-link active text-light" aria-current="page" href="/api/invoices/">Manage Invoices</a>
+            </li>
+            <li class="nav-item text-white p-3">
+                <a class="nav-link active text-light" aria-current="page" href="/api/clients/">Manage Client</a>
+            </li>
+            <li class="nav-item text-white  p-3" id="newclient">
+                <a class="nav-link active text-light" aria-current="page" href="/api/clients/new">Add Client</a>
+            </li>
+            <li class="nav-item text-white  p-3">
+                {{#if loggedIn}}
+                <button id="logout" class="btn-no-style">Logout</button>
+                {{!-- <button class=" btn-no-style nav-link active text-warning " aria-current="page"
+                    id="logout-nav">Logout</button> --}}
+                {{else}}
+                <a href="/login" class="nav-link active text-warning align-middle px-0">Login</a>
+                {{/if}}
+            </li>
+
+        </ul>
+    </div>
+</header>
 <div class="col-md-6">
-    <h2 id="heading" class="text-bg-secondary" id="new-invoice-heading">New Invoice</h2>
+    <h2 id="heading"  id="new-invoice-heading">New Invoice</h2>
 
     <div class="col-md-6">
         <form class="form-group">
