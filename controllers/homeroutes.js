@@ -26,11 +26,15 @@ router.get('/login', async (req, res) => {
 
 });
 
+
+
 //route for email
 router.get('/email', async (req, res) => {
   res.render('email');
 });
-
+router.get('/signup', async (req, res) => {
+  res.render('signup');
+});
 // //route for new invoice 
 // router.get('/newinvoice', async (req, res) => {
 //   try {
